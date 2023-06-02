@@ -2901,7 +2901,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "Grafana Operator - Kubernetes / Compute Resources / Cluster",
+  "title": "AWS Observability Accelerator - Kubernetes / Compute Resources / Cluster",
   "uid": "efa86fd1d0c121a26444b636a3f509a8",
   "version": 3,
   "weekStart": ""

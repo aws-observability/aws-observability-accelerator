@@ -1476,7 +1476,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "Grafana Operator - Kubernetes / Compute Resources / Node (Pods)",
+  "title": "AWS Observability Accelerator - Kubernetes / Compute Resources / Node (Pods)",
   "uid": "200ac8fdbfbb74b39aff88118e4d1c2c",
   "version": 7,
   "weekStart": ""

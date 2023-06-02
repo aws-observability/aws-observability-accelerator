@@ -2653,7 +2653,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "Grafana Operator - Kubernetes / Compute Resources / Namespace (Workloads)",
+  "title": "AWS Observability Accelerator - Kubernetes / Compute Resources / Namespace (Workloads)",
   "uid": "a87fb0d919ec0ea5f6543124e16c42a5",
   "version": 2,
   "weekStart": ""

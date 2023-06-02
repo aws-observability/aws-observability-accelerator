@@ -1275,7 +1275,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "Grafana Operator - Node Exporter / Nodes",
+  "title": "AWS Observability Accelerator - Node Exporter / Nodes",
   "uid": "v8yDYJqnz",
   "version": 18,
   "weekStart": ""
