@@ -7,7 +7,7 @@ spec:
     matchLabels:
       dashboards: "external-grafana"
   datasource:
-    name: X-Ray 
+    name: X-Ray
     type: grafana-x-ray-datasource
     access: server
     isDefault: false
