@@ -4,6 +4,7 @@ metadata:
   name: cluster-grafanadashboard
   namespace: grafana-operator
 spec:
+  folder: "Observability Accelerator"
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
@@ -15,6 +16,7 @@ metadata:
   name: kubelet-grafanadashboard
   namespace: grafana-operator
 spec:
+  folder: "Observability Accelerator"
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
@@ -26,6 +28,7 @@ metadata:
   name: namespace-workloads-grafanadashboard
   namespace: grafana-operator
 spec:
+  folder: "Observability Accelerator"
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
@@ -37,6 +40,7 @@ metadata:
   name: node-exporter-grafanadashboard
   namespace: grafana-operator
 spec:
+  folder: "Observability Accelerator"
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
@@ -48,6 +52,7 @@ metadata:
   name: nodes-grafanadashboard
   namespace: grafana-operator
 spec:
+  folder: "Observability Accelerator"
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
@@ -59,6 +64,7 @@ metadata:
   name: workloads-grafanadashboard
   namespace: grafana-operator
 spec:
+  folder: "Observability Accelerator"
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
