@@ -1,13 +1,13 @@
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
-  name: grafanadatasource-sample-xray
+  name: grafanadatasource-xray
 spec:
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
   datasource:
-    name: X-Ray
+    name: aws-observability-accelerator-xray
     type: grafana-x-ray-datasource
     access: server
     isDefault: false
