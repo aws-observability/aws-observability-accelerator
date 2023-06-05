@@ -6,6 +6,6 @@ resources:
   - amg_grafana-cw-datasource.yaml
   - amg_grafana-xray-datasource.yaml
   - amg_grafana-dashboards-amp.yaml
-	- amg_grafana-dashboards-eks-infra.yaml
-	- amg_grafana-dashboards-java.yaml
-	- amg_grafana-dashboards-nginx.yaml
+  - amg_grafana-dashboards-eks-infra.yaml
+  - amg_grafana-dashboards-java.yaml
+  - amg_grafana-dashboards-nginx.yaml
