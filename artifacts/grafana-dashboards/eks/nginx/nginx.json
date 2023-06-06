@@ -1435,7 +1435,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "AWS Observability Accelerator - NGINX",
+  "title": "NGINX",
   "uid": "nginx",
   "version": 5,
   "weekStart": ""

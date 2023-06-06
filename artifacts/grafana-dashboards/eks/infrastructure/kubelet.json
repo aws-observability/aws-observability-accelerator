@@ -2229,7 +2229,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "AWS Observability Accelerator - Kubernetes / Kubelet",
+  "title": "Kubernetes / Kubelet",
   "uid": "3138fa155d5915769fbded898ac09fd9",
   "version": 19,
   "weekStart": ""
