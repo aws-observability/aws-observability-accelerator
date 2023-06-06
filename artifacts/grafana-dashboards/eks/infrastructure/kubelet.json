@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
+  "id": 280,
   "iteration": 1666949805962,
   "links": [],
   "liveNow": false,
@@ -2148,7 +2148,7 @@
           "uid": "$datasource"
         },
         "definition": "",
-        "hide": 2,
+        "hide": 0,
         "includeAll": false,
         "label": "cluster",
         "multi": false,
