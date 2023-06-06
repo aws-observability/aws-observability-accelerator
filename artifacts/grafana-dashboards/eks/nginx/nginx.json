@@ -38,7 +38,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 9614,
   "graphTooltip": 0,
-  "id": 8,
+  "id": null,
   "iteration": 1663262425658,
   "links": [],
   "liveNow": false,
@@ -1435,7 +1435,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "AWS Observability Accelerator - NGINX",
+  "title": "NGINX",
   "uid": "nginx",
   "version": 5,
   "weekStart": ""

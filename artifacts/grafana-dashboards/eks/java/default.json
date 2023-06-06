@@ -23,7 +23,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 3457,
   "graphTooltip": 0,
-  "id": 403,
+  "id": null,
   "iteration": 1675938645502,
   "links": [],
   "liveNow": false,
@@ -1833,7 +1833,7 @@
     ]
   },
   "timezone": "",
-  "title": "AWS Observability Accelerator - Java/JMX",
+  "title": "Java/JMX",
   "uid": "m9mHfAy7ks",
   "version": 4,
   "weekStart": ""
