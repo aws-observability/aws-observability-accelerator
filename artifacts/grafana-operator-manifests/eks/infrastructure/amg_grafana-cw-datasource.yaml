@@ -1,13 +1,14 @@
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
-  name: grafanadatasource-sample-cw
+  name: grafanadatasource-cw
+  namespace: grafana-operator
 spec:
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
   datasource:
-    name: cloud-watch
+    name: aws-observability-accelerator-cloudwatch
     type: cloudwatch
     access: server
     isDefault: false
