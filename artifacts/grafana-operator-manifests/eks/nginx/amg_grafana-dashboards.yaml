@@ -7,5 +7,5 @@ spec:
   folder: "Observability Accelerator Dashboards"
   instanceSelector:
     matchLabels:
-      dashboards: "external-grafana"
+      dashboards: "external-grafana-nginx"
   url: ${GRAFANA_NGINX_DASH_URL}
