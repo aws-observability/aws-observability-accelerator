@@ -25,7 +25,6 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1667228305223,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -66,6 +65,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -125,7 +126,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -138,12 +140,14 @@
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum (\n  (1 - sum without (mode) (rate(node_cpu_seconds_total{job=\"node-exporter\", mode=~\"idle|iowait|steal\", nodename=~\"$instance\"}[5m])))\n/ ignoring(cpu) group_left\n  count without (cpu, mode) (node_cpu_seconds_total{job=\"node-exporter\", mode=\"idle\", nodename=~\"$instance\"})\n) by (nodename)\n",
+          "expr": "sum (\n  (1 - sum without (mode) (rate(node_cpu_seconds_total{job=\"node-exporter\", mode=~\"idle|iowait|steal\", nodename=~\"$instance\", cluster=\"$cluster\"}[5m])))\n/ ignoring(cpu) group_left\n  count without (cpu, mode) (node_cpu_seconds_total{job=\"node-exporter\", mode=\"idle\", nodename=~\"$instance\", cluster=\"$cluster\"})\n) by (nodename)\n",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{nodename}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -162,6 +166,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -220,7 +226,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -234,12 +241,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_load1{job=\"node-exporter\", nodename=~\"$instance\"})",
+          "expr": "sum(node_load1{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "1m load average",
+          "range": true,
           "refId": "A"
         },
         {
@@ -247,12 +256,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_load5{job=\"node-exporter\", nodename=~\"$instance\"})",
+          "expr": "sum(node_load5{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "5m load average",
+          "range": true,
           "refId": "B"
         },
         {
@@ -260,12 +271,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_load15{job=\"node-exporter\", nodename=~\"$instance\"})",
+          "expr": "sum(node_load15{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "15m load average",
+          "range": true,
           "refId": "C"
         }
       ],
@@ -310,6 +323,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -368,7 +383,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -382,12 +398,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "(\n  sum(node_memory_MemTotal_bytes{job=\"node-exporter\", nodename=~\"$instance\"})\n-\n  sum(node_memory_MemFree_bytes{job=\"node-exporter\", nodename=~\"$instance\"})\n-\n  sum(node_memory_Buffers_bytes{job=\"node-exporter\", nodename=~\"$instance\"})\n-\n  sum(node_memory_Cached_bytes{job=\"node-exporter\", nodename=~\"$instance\"})\n)\n",
+          "expr": "(\n  sum(node_memory_MemTotal_bytes{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"})\n-\n  sum(node_memory_MemFree_bytes{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"})\n-\n  sum(node_memory_Buffers_bytes{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"})\n-\n  sum(node_memory_Cached_bytes{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"})\n)\n",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "memory used",
+          "range": true,
           "refId": "A"
         },
         {
@@ -395,12 +413,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_memory_Buffers_bytes{job=\"node-exporter\", nodename=~\"$instance\"})",
+          "expr": "sum(node_memory_Buffers_bytes{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "memory buffers",
+          "range": true,
           "refId": "B"
         },
         {
@@ -408,12 +428,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_memory_Cached_bytes{job=\"node-exporter\", nodename=~\"$instance\"})",
+          "expr": "sum(node_memory_Cached_bytes{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "memory cached",
+          "range": true,
           "refId": "C"
         },
         {
@@ -421,12 +443,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_memory_MemFree_bytes{job=\"node-exporter\", nodename=~\"$instance\"})",
+          "expr": "sum(node_memory_MemFree_bytes{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "memory free",
+          "range": true,
           "refId": "D"
         }
       ],
@@ -484,19 +508,21 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "100 -\n(\n  avg(node_memory_MemAvailable_bytes{job=\"node-exporter\", nodename=~\"$instance\"}) /\n  avg(node_memory_MemTotal_bytes{job=\"node-exporter\", nodename=~\"$instance\"})\n* 100\n)\n",
+          "expr": "100 -\n(\n  avg(node_memory_MemAvailable_bytes{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"}) /\n  avg(node_memory_MemTotal_bytes{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\"})\n* 100\n)\n",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -541,6 +567,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -611,7 +639,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -625,12 +654,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_disk_read_bytes_total{job=\"node-exporter\", nodename=~\"$instance\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (nodename, device)",
+          "expr": "sum(rate(node_disk_read_bytes_total{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (nodename, device)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{nodename}} {{device}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -648,6 +679,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -718,7 +751,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -732,12 +766,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_disk_written_bytes_total{job=\"node-exporter\", nodename=~\"$instance\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (nodename, device)",
+          "expr": "sum(rate(node_disk_written_bytes_total{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (nodename, device)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{nodename}} {{device}}",
+          "range": true,
           "refId": "B"
         }
       ],
@@ -755,6 +791,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -825,7 +863,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -839,12 +878,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_disk_io_time_seconds_total{job=\"node-exporter\", nodename=~\"$instance\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (nodename, device)",
+          "expr": "sum(rate(node_disk_io_time_seconds_total{job=\"node-exporter\", nodename=~\"$instance\", cluster=\"$cluster\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (nodename, device)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{nodename}} {{device}}",
+          "range": true,
           "refId": "C"
         }
       ],
@@ -890,7 +931,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -913,12 +954,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(\n  max by (device) (\n    node_filesystem_size_bytes{job=\"node-exporter\", nodename=~\"$instance\", fstype!=\"\"}\n  -\n    node_filesystem_avail_bytes{job=\"node-exporter\", nodename=~\"$instance\", fstype!=\"\"}\n  )\n)\n",
+          "expr": "sum(\n  max by (device) (\n    node_filesystem_size_bytes{job=\"node-exporter\", nodename=~\"$instance\", fstype!=\"\", cluster=\"$cluster\"}\n  -\n    node_filesystem_avail_bytes{job=\"node-exporter\", nodename=~\"$instance\", fstype!=\"\", cluster=\"$cluster\"}\n  )\n)\n",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "used",
+          "range": true,
           "refId": "A"
         },
         {
@@ -1004,6 +1047,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1062,7 +1107,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -1076,8 +1122,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_network_receive_bytes_total{job=\"node-exporter\", device!=\"lo\", nodename=~\"$instance\"}[5m])) by (nodename)",
+          "expr": "sum(rate(node_network_receive_bytes_total{job=\"node-exporter\", device!=\"lo\", nodename=~\"$instance\", cluster=\"$cluster\"}[5m])) by (nodename)",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1100,6 +1147,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1158,7 +1207,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -1171,8 +1221,9 @@
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_network_transmit_bytes_total{job=\"node-exporter\", device!=\"lo\", nodename=~\"$instance\"}[5m])) by (nodename)",
+          "expr": "sum(rate(node_network_transmit_bytes_total{job=\"node-exporter\", device!=\"lo\", nodename=~\"$instance\", cluster=\"$cluster\"}[5m])) by (nodename)",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1186,44 +1237,14 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 35,
+  "revision": 1,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [
     "infrastructure"
   ],
   "templating": {
     "list": [
-      {
-        "allValue": ".*",
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${datasource}"
-        },
-        "definition": "label_values(node_uname_info{job=\"node-exporter\", sysname!=\"Darwin\"}, nodename)",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Instance",
-        "multi": true,
-        "name": "instance",
-        "options": [],
-        "query": {
-          "query": "label_values(node_uname_info{job=\"node-exporter\", sysname!=\"Darwin\"}, nodename)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
       {
         "current": {
           "selected": false,
@@ -1242,6 +1263,63 @@
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "definition": "label_values(up{job=\"kubelet\"}, cluster)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "query": "label_values(up{job=\"kubelet\"}, cluster)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "definition": "label_values(kube_node_info{cluster=\"$cluster\"}, node)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Instance",
+        "multi": true,
+        "name": "instance",
+        "options": [],
+        "query": {
+          "query": "label_values(kube_node_info{cluster=\"$cluster\"}, node)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -1277,6 +1355,6 @@
   "timezone": "utc",
   "title": "Node Exporter / Nodes",
   "uid": "v8yDYJqnz",
-  "version": 18,
+  "version": 281,
   "weekStart": ""
 }
