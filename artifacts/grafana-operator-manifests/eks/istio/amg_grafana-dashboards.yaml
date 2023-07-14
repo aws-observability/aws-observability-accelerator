@@ -1,0 +1,23 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: istio-controlplane-grafanadashboard
+  namespace: grafana-operator
+spec:
+  folder: "Observability Accelerator Dashboards"
+  instanceSelector:
+    matchLabels:
+      dashboards: "external-grafana"
+  url: ${GRAFANA_ISTIO_CP_DASH_URL}
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: istio-mesh-grafanadashboard
+  namespace: grafana-operator
+spec:
+  folder: "Observability Accelerator Dashboards"
+  instanceSelector:
+    matchLabels:
+      dashboards: "external-grafana"
+  url: ${GRAFANA_ISTIO_MESH_DASH_URL}
