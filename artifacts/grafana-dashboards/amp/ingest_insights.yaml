@@ -1,0 +1,37 @@
+groups:
+- name: ingest-insights
+  interval: 10m
+  rules:
+  - record: metrics_cardinality:topk20
+    expr: |
+      topk(20,
+          (
+              label_replace(topk(20, count by (__name__) ({__name__=~"^a.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^b.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^c.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^d.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^e.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^f.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^g.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^h.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^i.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^j.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^k.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^l.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^m.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^n.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^o.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^p.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^q.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^r.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^s.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^t.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^u.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^v.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^w.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^x.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^y.+"})), "name_label","$1","__name__", "(.+)") or on(__name__)
+              label_replace(topk(20, count by (__name__) ({__name__=~"^z.+"})), "name_label","$1","__name__", "(.+)")
+          )
+      )
+
