@@ -6,6 +6,7 @@
         "datasource": {
           "type": "grafana",
           "uid": "-- Grafana --"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -25,12 +26,13 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 12006,
   "graphTooltip": 0,
-  "id": null,
+  "id": 20,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -75,8 +77,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -610,17 +611,13 @@
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
       },
       {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_AWS-OBSERVABILITY-ACCELERATOR}"
-        },
         "definition": "label_values(up{job=\"$job\"}, cluster)",
         "hide": 0,
         "includeAll": false,
@@ -639,11 +636,6 @@
         "type": "query"
       },
       {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_AWS-OBSERVABILITY-ACCELERATOR}"
-        },
         "definition": "label_values(apiserver_request_total, job)",
         "hide": 2,
         "includeAll": false,
@@ -662,11 +654,6 @@
         "type": "query"
       },
       {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_AWS-OBSERVABILITY-ACCELERATOR}"
-        },
         "definition": "label_values(up{job=\"$job\", cluster=\"$cluster\"}, instance)",
         "description": "K8s/EKS api server instance",
         "hide": 0,
@@ -708,6 +695,6 @@
   "timezone": "utc",
   "title": "Kubernetes / Kube-apiserver (basic)",
   "uid": "R6abPf9Zz",
-  "version": 22,
+  "version": 5,
   "weekStart": ""
 }
