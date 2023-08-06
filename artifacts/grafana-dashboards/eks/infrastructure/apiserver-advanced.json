@@ -1017,7 +1017,7 @@
         "max": false,
         "min": false,
         "rightSide": true,
-        "show": false,
+        "show": true,
         "total": false,
         "values": false
       },
@@ -1111,7 +1111,7 @@
         "max": false,
         "min": false,
         "rightSide": true,
-        "show": false,
+        "show": true,
         "total": false,
         "values": false
       },
