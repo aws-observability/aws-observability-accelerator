@@ -24,16 +24,16 @@
   "description": "Latency and cache hit graphs for Kubernetes apiserver.  Useful for observing performance of Amazon EKS clusters.",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": 12006,
   "graphTooltip": 0,
-  "id": 20,
+  "id": null,
   "links": [],
   "liveNow": false,
   "panels": [
     {
+      "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "$datasource"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -117,7 +117,8 @@
       "targets": [
         {
           "datasource": {
-            "uid": "$datasource"
+            "uid": "prometheus",
+            "type": "prometheus"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -132,7 +133,6 @@
     },
     {
       "datasource": {
-        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -589,7 +589,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "30s",
+  "refresh": "10s",
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
@@ -601,8 +601,8 @@
       {
         "current": {
           "selected": false,
-          "text": "aws-observability-accelerator",
-          "value": "aws-observability-accelerator"
+          "text": "default",
+          "value": "default"
         },
         "hide": 0,
         "includeAll": false,
@@ -690,6 +690,17 @@
       "1h",
       "2h",
       "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
     ]
   },
   "timezone": "utc",
