@@ -1,47 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_AWS-OBSERVABILITY-ACCELERATOR",
-      "label": "aws-observability-accelerator",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "9.4.7"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph (old)",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "text",
-      "name": "Text",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -64,6 +21,7 @@
       }
     ]
   },
+  "description": "Advanced latency and cache hit graphs for Kubernetes apiserver.  Useful for observing performance of Amazon EKS clusters.",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
@@ -74,7 +32,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_AWS-OBSERVABILITY-ACCELERATOR}"
+        "uid": "$datasource"
       },
       "description": "The SLO (service level objective) and other metrics displayed on this dashboard are for informational purposes only.",
       "gridPos": {
@@ -109,6 +67,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "How many percent of requests (both read and write) in 30 days have been answered successfully and fast enough?",
@@ -192,6 +151,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "decimals": 3,
@@ -280,6 +240,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "How many percent of read requests (LIST,GET) in 30 days have been answered successfully and fast enough?",
@@ -472,6 +433,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "How many percent of read requests (LIST,GET) per second are returned with errors (5xx)?",
@@ -651,6 +613,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "How many percent of write requests (POST|PUT|PATCH|DELETE) in 30 days have been answered successfully and fast enough?",
@@ -734,6 +697,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "How many write requests (POST|PUT|PATCH|DELETE) per second do the apiservers get by code?",
@@ -840,6 +804,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "How many percent of write requests (POST|PUT|PATCH|DELETE) per second are returned with errors (5xx)?",
@@ -931,6 +896,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "How many seconds is the 99th percentile for writing (POST|PUT|PATCH|DELETE) a given resource?",
