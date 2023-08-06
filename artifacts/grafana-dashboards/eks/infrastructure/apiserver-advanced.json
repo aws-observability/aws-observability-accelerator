@@ -57,7 +57,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_AWS-OBSERVABILITY-ACCELERATOR}"
+            "uid": "$datasource"
           },
           "refId": "A"
         }
@@ -133,6 +133,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "expr": "apiserver_request:availability30d{verb=\"all\", cluster=\"$cluster\"}",
@@ -197,6 +198,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "expr": "100 * (apiserver_request:availability30d{verb=\"all\", cluster=\"$cluster\"} - 0.990000)",
@@ -306,6 +308,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "expr": "apiserver_request:availability30d{verb=\"read\", cluster=\"$cluster\"}",
@@ -386,6 +389,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "editorMode": "code",
@@ -478,6 +482,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "expr": "sum by (resource) (code_resource:apiserver_request_total:rate5m{verb=\"read\",code=~\"5..\", cluster=\"$cluster\"}) / sum by (resource) (code_resource:apiserver_request_total:rate5m{verb=\"read\", cluster=\"$cluster\"})",
@@ -570,6 +575,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "editorMode": "code",
@@ -679,6 +685,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "expr": "apiserver_request:availability30d{verb=\"write\", cluster=\"$cluster\"}",
@@ -759,6 +766,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "expr": "sum by (code) (code_resource:apiserver_request_total:rate5m{verb=\"write\", cluster=\"$cluster\"})",
@@ -849,6 +857,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "expr": "sum by (resource) (code_resource:apiserver_request_total:rate5m{verb=\"write\",code=~\"5..\", cluster=\"$cluster\"}) / sum by (resource) (code_resource:apiserver_request_total:rate5m{verb=\"write\", cluster=\"$cluster\"})",
@@ -941,6 +950,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "expr": "cluster_quantile:apiserver_request_slo_duration_seconds:histogram_quantile{verb=\"write\", cluster=\"$cluster\"}",
@@ -1030,6 +1040,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "editorMode": "code",
@@ -1123,6 +1134,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "editorMode": "code",
@@ -1216,6 +1228,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "editorMode": "code",
@@ -1307,6 +1320,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "editorMode": "code",
@@ -1398,6 +1412,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "editorMode": "code",
@@ -1491,6 +1506,7 @@
       "targets": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "$datasource"
           },
           "editorMode": "code",
@@ -1612,10 +1628,9 @@
         "useTags": false
       },
       {
-        "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_AWS-OBSERVABILITY-ACCELERATOR}"
+          "uid": "$datasource"
         },
         "definition": "label_values(apiserver_request_total, job)",
         "hide": 2,
