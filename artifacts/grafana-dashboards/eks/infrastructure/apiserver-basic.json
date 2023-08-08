@@ -667,7 +667,7 @@
           ]
         },
         "definition": "label_values(up{job=\"$job\", cluster=\"$cluster\"}, instance)",
-        "description": "K8s/EKS api server instance",
+        "description": "EKS api server instance",
         "hide": 0,
         "includeAll": false,
         "label": "instance",
