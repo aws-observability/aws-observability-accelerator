@@ -1754,7 +1754,16 @@
         "useTags": false
       },
       {
-        "current": {},
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
         "datasource": {
           "type": "prometheus",
           "uid": "$datasource"
@@ -1762,7 +1771,7 @@
         "definition": "label_values(up{job=\"$job\", cluster=\"$cluster\"}, instance)",
         "hide": 0,
         "includeAll": true,
-        "multi": false,
+        "multi": true,
         "name": "instance",
         "options": [],
         "query": {
