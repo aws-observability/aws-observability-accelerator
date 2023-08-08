@@ -667,7 +667,7 @@
           ]
         },
         "definition": "label_values(up{job=\"$job\", cluster=\"$cluster\"}, instance)",
-        "description": "EKS api server instance",
+        "description": "EKS api server instances",
         "hide": 0,
         "includeAll": true,
         "label": "instance",
