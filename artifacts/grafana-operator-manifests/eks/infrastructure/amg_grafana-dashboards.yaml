@@ -80,4 +80,4 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
-  url: ${GRAFANA_ADOTHEALTH__DASH_URL}    
+  url: ${GRAFANA_ADOTHEALTH_DASH_URL}    
