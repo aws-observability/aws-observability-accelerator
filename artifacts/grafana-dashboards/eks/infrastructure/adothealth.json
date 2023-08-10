@@ -1373,7 +1373,7 @@
         "type": "prometheus",
         "uid": "$datasource"
       },
-      "description": "Sent: count/rate of log records successfully sent to destination.\nEngueue: count/rate of log records failed to be added to the sending queue.",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1400,7 +1400,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1427,7 +1427,38 @@
           },
           "unit": "short"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Enqueue failed spans rate: "
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Failed request rate: "
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 9,
@@ -1435,7 +1466,7 @@
         "x": 16,
         "y": 27
       },
-      "id": 48,
+      "id": 46,
       "interval": "",
       "links": [],
       "options": {
@@ -1463,32 +1494,17 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(${metric:value}(otelcol_exporter_sent_log_records{exporter=~\"$exporter\"}[$__rate_interval])) by (exporter)",
-          "format": "time_series",
-          "interval": "$minstep",
-          "intervalFactor": 1,
-          "legendFormat": "Sent: {{exporter}}",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "sum(${metric:value}(otelcol_exporter_enqueue_failed_log_records{exporter=~\"$exporter\"}[$__rate_interval])) by (exporter)",
+          "expr": "sum(${metric:value}(otelcol_exporter_send_failed_requests{}[$__rate_interval]))",
           "format": "time_series",
           "hide": false,
           "interval": "$minstep",
           "intervalFactor": 1,
-          "legendFormat": "Enqueue: {{exporter}}",
+          "legendFormat": "Failed request rate: {{exporter}}",
           "range": true,
           "refId": "B"
         }
       ],
-      "title": "Logs Records ${metric:text}",
+      "title": "Failed Request ${metric:text}",
       "type": "timeseries"
     },
     {
@@ -1699,145 +1715,6 @@
         }
       ],
       "title": "Exporter Queue Capacity",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Enqueue failed spans rate: "
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Failed request rate: "
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 16,
-        "y": 36
-      },
-      "id": 46,
-      "interval": "",
-      "links": [],
-      "options": {
-        "legend": {
-          "calcs": [
-            "min",
-            "max",
-            "mean"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "8.3.5",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "sum(${metric:value}(otelcol_exporter_send_failed_requests{}[$__rate_interval]))",
-          "format": "time_series",
-          "hide": false,
-          "interval": "$minstep",
-          "intervalFactor": 1,
-          "legendFormat": "Failed request rate: {{exporter}}",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "Failed Request ${metric:text}",
       "type": "timeseries"
     },
     {
@@ -3202,82 +3079,6 @@
         "type": "prometheus",
         "uid": "$datasource"
       },
-      "description": "Receivers -> Processor(s) -> Exporters (Node Graph panel is beta, so this panel may not show data correctly).",
-      "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 16,
-        "y": 70
-      },
-      "id": 61,
-      "options": {
-        "nodes": {
-          "mainStatUnit": "flops"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "# receivers\nlabel_join(\n  label_join(\n    sum(${metric:value}(\n      otelcol_receiver_accepted_log_records{receiver=~\"$receiver\"}[$__rate_interval])\n    ) by (receiver)\n    , \"id\", \"-rcv-\", \"transport\", \"receiver\"\n  )\n  , \"title\", \"\", \"transport\", \"receiver\"\n)\n\n# dummy processor\nor\nlabel_replace(\n  label_replace(\n    (sum(rate(otelcol_process_uptime{}[$__interval])))\n    , \"id\", \"processor\", \"\", \"\"\n  )\n  , \"title\", \"Processor(s)\", \"\", \"\"\n)\n\n# exporters\nor\nlabel_join(\n  label_join(\n    sum(${metric:value}(\n      otelcol_exporter_sent_log_records{exporter=~\"$exporter\"}[$__rate_interval])\n    ) by (exporter)\n    , \"id\", \"-exp-\", \"transport\", \"exporter\"\n  )\n  , \"title\", \"\", \"transport\", \"exporter\"\n)",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "__auto",
-          "range": false,
-          "refId": "nodes"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "# receivers -> processor\r\nlabel_join(\r\n    label_replace(\r\n        label_join(\r\n            (sum(rate(otelcol_receiver_accepted_log_records{}[$__interval])) by (receiver))\r\n            , \"source\", \"-rcv-\", \"transport\", \"receiver\"\r\n        )\r\n        , \"target\", \"processor\", \"\", \"\"\r\n    )\r\n    , \"id\", \"-edg-\", \"source\", \"target\"\r\n)\r\n\r\n# processor -> exporters\r\nor \r\nlabel_join(\r\n    label_replace(\r\n        label_join(\r\n            (sum(rate(otelcol_exporter_sent_log_records{}[$__interval])) by (exporter))\r\n            ,\"target\",\"-exp-\",\"transport\",\"exporter\"\r\n        )\r\n        ,\"source\",\"processor\",\"\",\"\"\r\n    )\r\n    ,\"id\",\"-edg-\",\"source\",\"target\"\r\n)",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "__auto",
-          "range": false,
-          "refId": "edges"
-        }
-      ],
-      "title": "Log Records Flow",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "Value",
-            "renamePattern": "mainstat"
-          }
-        },
-        {
-          "disabled": true,
-          "id": "calculateField",
-          "options": {
-            "alias": "secondarystat",
-            "mode": "reduceRow",
-            "reduce": {
-              "include": [
-                "mainstat"
-              ],
-              "reducer": "sum"
-            }
-          }
-        }
-      ],
-      "type": "nodeGraph"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
       "editable": true,
       "error": false,
       "gridPos": {
@@ -3295,7 +3096,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<a href=\"http://www.monitoringartist.com\" target=\"_blank\" title=\"Dashboard maintained by Monitoring Artist - DevOps / Docker / Kubernetes / AWS ECS / Google GCP / Zabbix / Zenoss / Terraform / Monitoring\"><img src=\"https://monitoringartist.github.io/monitoring-artist-logo-grafana.png\" height=\"30px\" /></a> | \n<a target=\"_blank\" href=\"https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#metrics\">OTEL collector troubleshooting (how to enable telemetry metrics)</a> | \n<a target=\"_blank\" href=\"https://opentelemetry.io/docs/collector/scaling/\">Scaling the Collector (metrics to watch)</a> | \n<a target=\"_blank\" href=\"https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/\">Installed from Grafana.com dashboards</a>",
+		"content": "<a  href=\"https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#metrics\">OTEL collector troubleshooting (how to enable telemetry metrics)</a> | \n<a target=\"_blank\" href=\"https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/\">Installed from Grafana.com dashboards</a>",
         "mode": "html"
       },
       "pluginVersion": "9.4.7",
@@ -3324,9 +3125,9 @@
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "Prometheus ws-f5d23b06-2b97-476f-a3d5-aca87a3b381c",
-          "value": "Prometheus ws-f5d23b06-2b97-476f-a3d5-aca87a3b381c"
+          "selected": true,
+          "text": "Prometheus ws-8661518a-cb0f-4db1-ae10-55592db589a9",
+          "value": "Prometheus ws-8661518a-cb0f-4db1-ae10-55592db589a9"
         },
         "hide": 0,
         "includeAll": false,
@@ -3346,7 +3147,7 @@
         "auto_count": 300,
         "auto_min": "10s",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "auto",
           "value": "$__auto_interval_minstep"
         },
@@ -3567,8 +3368,8 @@
     ]
   },
   "timezone": "utc",
-  "title": "OpenTelemetry Collector",
-  "uid": "BKf2sowmj",
-  "version": 2,
+  "title": "OpenTelemetry Health Collector",
+  "uid": "reshmanat",
+  "version": 1,
   "weekStart": ""
 }
