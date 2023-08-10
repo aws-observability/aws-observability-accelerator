@@ -3117,10 +3117,6 @@
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [
-    "opentelemetry",
-    "monitoringartist"
-  ],
   "templating": {
     "list": [
       {
