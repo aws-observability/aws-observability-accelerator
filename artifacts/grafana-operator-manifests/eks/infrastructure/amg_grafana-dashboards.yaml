@@ -69,7 +69,7 @@ spec:
     matchLabels:
       dashboards: "external-grafana"
   url: ${GRAFANA_WORKLOADS_DASH_URL}
----    
+---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
 metadata:
@@ -80,4 +80,4 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
-  url: ${GRAFANA_ADOTHEALTH_DASH_URL}    
+  url: ${GRAFANA_ADOTHEALTH_DASH_URL}
