@@ -1139,7 +1139,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_AWS-OBSERVABILITY-ACCELERATOR}"
+          "uid": "$datasource"
         },
         "definition": "label_values(kubeproxy_sync_proxy_rules_duration_seconds_count, job)",
         "description": "",
