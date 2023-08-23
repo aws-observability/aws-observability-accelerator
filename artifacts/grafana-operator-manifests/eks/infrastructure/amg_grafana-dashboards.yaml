@@ -25,18 +25,6 @@ spec:
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
 metadata:
-  name: kubeproxy-grafanadashboard
-  namespace: grafana-operator
-spec:
-  folder: "Observability Accelerator Dashboards"
-  instanceSelector:
-    matchLabels:
-      dashboards: "external-grafana"
-  url: ${GRAFANA_KUBEPROXY_DASH_URL}
----
-apiVersion: grafana.integreatly.org/v1beta1
-kind: GrafanaDashboard
-metadata:
   name: namespace-workloads-grafanadashboard
   namespace: grafana-operator
 spec:
