@@ -8,12 +8,13 @@ spec:
     matchLabels:
       dashboards: "external-grafana"
   datasource:
-    name: aws-observability-accelerator-xray
+    name: grafana-operator-xray-datasource
     type: grafana-x-ray-datasource
     access: server
     isDefault: false
     jsonData:
-      "authType": "ec2_iam_role"
-      "defaultRegion": {{ .Values.AMG_AWS_REGION }}
-      "provisionedBy": "aws-datasource-provisioner-app"
+      'tlsSkipVerify': false    
+      'authType': "ec2_iam_role"
+      'assumeRoleArn': "arn:aws:iam::{{ .Values.AMP_ACCOUNT_ID }}:role/cloudwatchDataSourceRole"            
+      'defaultRegion': {{ .Values.AMG_AWS_REGION }}
     editable: true

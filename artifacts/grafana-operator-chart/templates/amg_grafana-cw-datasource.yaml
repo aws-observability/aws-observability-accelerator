@@ -13,7 +13,6 @@ spec:
     access: server
     isDefault: false
     jsonData:
-      'timeout': '20m'
       'tlsSkipVerify': false
       'authType': "ec2_iam_role"
       'assumeRoleArn': "arn:aws:iam::{{ .Values.AMP_ACCOUNT_ID }}:role/cloudwatchDataSourceRole"      
