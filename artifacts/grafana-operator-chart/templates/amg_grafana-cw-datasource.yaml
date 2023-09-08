@@ -1,0 +1,25 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: grafanadatasource-cw
+  namespace: grafana-operator
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "external-grafana"
+  datasource:
+    name: cloud-watch
+    type: cloudwatch
+    access: server
+    isDefault: false
+    jsonData:
+      'tlsSkipVerify': false
+      'timeInterval': "5s"
+      "sigV4Auth": true
+      "sigV4AuthType": "ec2_iam_role"
+      'sigV4AssumeRoleArn': "arn:aws:iam::{{ .Values.AMP_ACCOUNT_ID }}:role/cloudwatchDataSourceRole"      
+      "sigV4Region": {{ .Values.AMG_AWS_REGION }}
+      "customMetricsNamespaces": "ContainerInsights/Prometheus"
+      "defaultRegion": {{ .Values.AMG_AWS_REGION }}
+      "provisionedBy": "aws-datasource-provisioner-app"
+    editable: true

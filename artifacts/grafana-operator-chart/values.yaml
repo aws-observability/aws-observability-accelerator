@@ -1,0 +1,14 @@
+kubernetesClusterDomain: cluster.local
+
+AMG_AWS_REGION: 'UPDATE_ME_WITH_AMG_REGION'
+AMG_ENDPOINT_URL: 'UPDATE_ME_WITH_AMG_ENDPOINT_URL_STARTING_WITH_HTTPS'
+
+AMP_ACCOUNT_ID: 'UPDATE_ME_WITH_AMP_ACCOUNT_ID'
+AMP_ENDPOINT_URL: 'UPDATE_ME_WITH_AMP_ENDPOINT_URL'
+
+GRAFANA_CLUSTER_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/cluster.json"
+GRAFANA_KUBELET_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/kubelet.json"
+GRAFANA_NSWRKLDS_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/namespace-workloads.json"
+GRAFANA_NODEEXP_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/nodeexporter-nodes.json"
+GRAFANA_NODES_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/nodes.json"
+GRAFANA_WORKLOADS_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/workloads.json"

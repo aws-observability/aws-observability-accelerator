@@ -1,0 +1,19 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: grafanadatasource-xray
+  namespace: grafana-operator  
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "external-grafana"
+  datasource:
+    name: aws-observability-accelerator-xray
+    type: grafana-x-ray-datasource
+    access: server
+    isDefault: false
+    jsonData:
+      "authType": "ec2_iam_role"
+      "defaultRegion": {{ .Values.AMG_AWS_REGION }}
+      "provisionedBy": "aws-datasource-provisioner-app"
+    editable: true
