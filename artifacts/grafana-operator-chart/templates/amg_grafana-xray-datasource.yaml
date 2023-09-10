@@ -15,6 +15,6 @@ spec:
     jsonData:
       'tlsSkipVerify': false    
       'authType': "ec2_iam_role"
-      'assumeRoleArn': "arn:aws:iam::{{ .Values.CW_ACCOUNT_ID }}:role/cloudwatchDataSourceRole"            
+      'assumeRoleArn': {{ .Values.CW_ASSUME_ROLE_ARN }}
       'defaultRegion': {{ .Values.CW_AWS_REGION }}
     editable: true
