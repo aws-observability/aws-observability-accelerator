@@ -17,5 +17,5 @@ spec:
       'authType': "ec2_iam_role"
       'assumeRoleArn': {{ .Values.CW_ASSUME_ROLE_ARN }}
       'defaultRegion': {{ .Values.CW_AWS_REGION }}
-      'customMetricsNamespaces': "ContainerInsights"
+      'customMetricsNamespaces': "ContainerInsights/Prometheus"
     editable: true
