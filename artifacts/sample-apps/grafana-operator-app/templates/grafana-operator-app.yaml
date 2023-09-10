@@ -17,6 +17,4 @@ spec:
     helm:
       values: |
         {{- toYaml .Values | nindent 8 }}
-  syncPolicy:
-    automated: none
-      - CreateNamespace=true
+  syncPolicy: {}
