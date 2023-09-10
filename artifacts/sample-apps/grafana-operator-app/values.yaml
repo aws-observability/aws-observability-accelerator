@@ -4,6 +4,9 @@ argoProject: ''
 spec:
   destination:
     server: https://kubernetes.default.svc
+  source:
+    repoURL: {{ .Values.argocd.repoURL }}
+    targetRevision: main
 
 AMP_ACCOUNT_ID: 'UPDATE_ME_WITH_AMP_ACCOUNT_ID'
 AMP_AWS_REGION: 'UPDATE_ME_WITH_AMP_AWS_REGION'
