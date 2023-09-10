@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: team-carmen
   namespace: {{ .Values.argoNamespace | default "argocd" }}
-  labels:
+  labels: |
     {{- toYaml .Values.labels | nindent 4 }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io

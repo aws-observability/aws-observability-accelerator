@@ -19,6 +19,6 @@ spec:
       'sigV4Auth': true
       'sigV4AuthType': "ec2_iam_role"
       'sigV4AssumeRoleArn': "arn:aws:iam::{{ .Values.AMP_ACCOUNT_ID }}:role/ampPrometheusDataSourceRole"
-      'sigV4Region': {{ .Values.AMG_AWS_REGION }}
-      'defaultRegion': {{ .Values.AMG_AWS_REGION }}
+      'sigV4Region': {{ .Values.AMP_AWS_REGION }}
+      'defaultRegion': {{ .Values.AMP_AWS_REGION }}
     editable: true 

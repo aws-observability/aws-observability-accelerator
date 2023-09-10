@@ -15,6 +15,6 @@ spec:
     jsonData:
       'tlsSkipVerify': false    
       'authType': "ec2_iam_role"
-      'assumeRoleArn': "arn:aws:iam::{{ .Values.AMP_ACCOUNT_ID }}:role/cloudwatchDataSourceRole"            
-      'defaultRegion': {{ .Values.AMG_AWS_REGION }}
+      'assumeRoleArn': "arn:aws:iam::{{ .Values.CW_ACCOUNT_ID }}:role/cloudwatchDataSourceRole"            
+      'defaultRegion': {{ .Values.CW_AWS_REGION }}
     editable: true

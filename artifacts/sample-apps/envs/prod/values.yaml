@@ -8,12 +8,12 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/aws-samples/eks-blueprints-workloads
+    repoURL: https://github.com/aws-observability/aws-observability-accelerator
     targetRevision: main
 
   # Thoses default values can be surcharged by Infrastructure as Code
   env: prod
-  clusterName: eks-blueprint-cluster # the name of EKS cluster
+  clusterName: coa-eks-blueprint-cluster # the name of EKS cluster
   blueprint: 'terraform' # cdk | terraform
   karpenterInstanceProfile:
   ingress:

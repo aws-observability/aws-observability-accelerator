@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana-operator-app
+  namespace: grafana-operator
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argoProject | default "default" }}
+  destination:
+    namespace: grafana-operator
+    server: {{ .Values.spec.destination.server }}
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+    path: artifacts/grafana-operator-chart
+    helm:
+      values: |
+        {{- toYaml .Values | nindent 8 }}
+  syncPolicy:
+    automated: none
+      - CreateNamespace=true
