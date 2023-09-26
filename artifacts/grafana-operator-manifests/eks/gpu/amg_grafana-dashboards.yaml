@@ -4,8 +4,12 @@ metadata:
   name: gpu-nvidia-dcgm-exporter-dashboard
   namespace: grafana-operator
 spec:
+  datasources:
+    - inputName: "DS_PROMETHEUS"
+      datasourceName: "aws-observability-accelerator"
   folder: "Observability Accelerator Dashboards"
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
-  url: "https://grafana.com/api/dashboards/12239/revisions/2/download"
+  grafanaCom:
+    id: 12239
