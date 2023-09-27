@@ -21,4 +21,4 @@ spec:
       'sigV4AssumeRoleArn': {{ .Values.AMP_ASSUME_ROLE_ARN }}
       'sigV4Region': {{ .Values.AMP_AWS_REGION }}
       'defaultRegion': {{ .Values.AMP_AWS_REGION }}
-    editable: true 
+    editable: true

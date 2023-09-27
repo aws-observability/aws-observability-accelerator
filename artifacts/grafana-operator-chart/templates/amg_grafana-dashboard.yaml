@@ -44,7 +44,7 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
-  url: {{ .Values.GRAFANA_NSWRKLDS_DASH_URL }}  
+  url: {{ .Values.GRAFANA_NSWRKLDS_DASH_URL }}
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -56,7 +56,7 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
-  url: {{ .Values.GRAFANA_NODES_DASH_URL }}    
+  url: {{ .Values.GRAFANA_NODES_DASH_URL }}
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -68,5 +68,5 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: "external-grafana"
-  url: {{ .Values.GRAFANA_WORKLOADS_DASH_URL }}    
+  url: {{ .Values.GRAFANA_WORKLOADS_DASH_URL }}
 

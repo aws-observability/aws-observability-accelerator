@@ -2,7 +2,7 @@ apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
   name: grafanadatasource-xray
-  namespace: grafana-operator  
+  namespace: grafana-operator
 spec:
   instanceSelector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
     access: server
     isDefault: false
     jsonData:
-      'tlsSkipVerify': false    
+      'tlsSkipVerify': false
       'authType': "ec2_iam_role"
       'assumeRoleArn': {{ .Values.CW_ASSUME_ROLE_ARN }}
       'defaultRegion': {{ .Values.CW_AWS_REGION }}
