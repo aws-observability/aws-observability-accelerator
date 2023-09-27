@@ -69,4 +69,3 @@ spec:
     matchLabels:
       dashboards: "external-grafana"
   url: {{ .Values.GRAFANA_WORKLOADS_DASH_URL }}
-
