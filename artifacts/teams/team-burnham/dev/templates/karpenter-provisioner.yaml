@@ -38,7 +38,7 @@ kind: AWSNodeTemplate
 metadata:
   name: karpenter-default
   labels:
-    {{- toYaml .Values.labels | nindent 4 }}  
+    {{- toYaml .Values.labels | nindent 4 }}
 spec:
   #amiFamily: Bottlerocket
   #instanceProfile: '{{ .Values.spec.karpenterInstanceProfile }}'
@@ -62,7 +62,7 @@ kind: Provisioner
 metadata:
   name: burnham
   labels:
-    {{- toYaml .Values.labels | nindent 4 }}     
+    {{- toYaml .Values.labels | nindent 4 }}
 spec:
   requirements:
     # - key: 'node.kubernetes.io/instance-type'
@@ -118,7 +118,7 @@ spec:
     - key: karpenter.k8s.aws/instance-cpu
       operator: Lt
       values:
-        - '33'    
+        - '33'
     - key: 'kubernetes.io/arch'
       operator: In
       values: ['amd64']

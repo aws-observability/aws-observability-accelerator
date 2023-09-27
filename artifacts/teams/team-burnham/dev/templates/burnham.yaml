@@ -25,7 +25,7 @@ metadata:
     external-dns.alpha.kubernetes.io/set-identifier: {{ .Values.spec.clusterName }}
     external-dns.alpha.kubernetes.io/aws-weight: '{{ .Values.spec.ingress.route53_weight }}'
     external-dns.alpha.kubernetes.io/ttl: "10"
-  {{ end }}    
+  {{ end }}
 spec:
 {{ if eq .Values.spec.ingress.type "nginx" }}
   kubernetes.io/ingress.class: "nginx"
@@ -53,7 +53,7 @@ kind: Service
 metadata:
   name: burnham
   labels:
-    app: burnham-ingress-{{ .Values.spec.env }}  
+    app: burnham-ingress-{{ .Values.spec.env }}
 spec:
   ports:
   - port: 80

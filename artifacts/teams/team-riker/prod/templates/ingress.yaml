@@ -27,9 +27,9 @@ metadata:
   {{ if .Values.spec.ingress.host }}
     external-dns.alpha.kubernetes.io/set-identifier: {{ .Values.spec.clusterName }}
     external-dns.alpha.kubernetes.io/aws-weight: '{{ .Values.spec.ingress.route53_weight }}'
-  {{ end }}    
+  {{ end }}
 spec:
-{{ if eq .Values.spec.ingress.type "nginx" }}  
+{{ if eq .Values.spec.ingress.type "nginx" }}
   ingressClassName: nginx
 {{ else }}
   ingressClassName: alb
@@ -38,8 +38,8 @@ spec:
   {{ if .Values.spec.ingress.host }}
   - host: guestbook-ui.{{ .Values.spec.ingress.host }}
   {{ else }}
-  - host:  
-  {{ end }}  
+  - host:
+  {{ end }}
     http:
       paths:
       - path: /
@@ -47,5 +47,5 @@ spec:
         backend:
           service:
             name: guestbook-ui
-            port: 
+            port:
               number: 80

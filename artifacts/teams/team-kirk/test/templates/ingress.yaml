@@ -10,7 +10,7 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/tags: Environment=test,Project=cognito
-    external-dns.alpha.kubernetes.io/hostname: {{ .Values.spec.ingress.host }} 
+    external-dns.alpha.kubernetes.io/hostname: {{ .Values.spec.ingress.host }}
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
     alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
     alb.ingress.kubernetes.io/auth-type: cognito
@@ -25,8 +25,8 @@ spec:
     {{ if .Values.spec.ingress.host }}
     - host: {{ .Values.spec.ingress.host }}
     {{ else }}
-    - host:  
-    {{ end }} 
+    - host:
+    {{ end }}
       http:
         paths:
           - path: /
@@ -34,5 +34,5 @@ spec:
             backend:
               service:
                 name: kubecost-cost-analyzer-cost-analyzer
-                port: 
+                port:
                   number: 9090
