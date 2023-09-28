@@ -1,0 +1,15 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: gpu-nvidia-dcgm-exporter-dashboard
+  namespace: grafana-operator
+spec:
+  datasources:
+    - inputName: "DS_PROMETHEUS"
+      datasourceName: "aws-observability-accelerator"
+  folder: "Observability Accelerator Dashboards"
+  instanceSelector:
+    matchLabels:
+      dashboards: "external-grafana"
+  grafanaCom:
+    id: 12239
