@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
-    path: artifacts/grafana-operator-chart
+    path: artifacts/argocd-apps/grafana-operator-chart
     helm:
       values: |
         {{- toYaml .Values | nindent 8 }}

@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
-    path: artifacts/teams/team-geordie/prod
+    path: artifacts/argocd-apps/teams/team-geordie/prod
     helm:
       values: |
         {{- toYaml .Values | nindent 8 }}
