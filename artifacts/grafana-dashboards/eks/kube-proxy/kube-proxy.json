@@ -161,7 +161,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "sum(rate(kubeproxy_sync_proxy_rules_duration_seconds_count{cluster=\"$cluster\", job=\"$job\", instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(kubeproxy_sync_proxy_rules_duration_seconds_count{cluster=\"$cluster\", job=\"$job\", k8s_node_name=~\"$instance\"}[$__rate_interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "rate",
@@ -253,7 +253,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "histogram_quantile(0.99,rate(kubeproxy_sync_proxy_rules_duration_seconds_bucket{cluster=\"$cluster\", job=\"$job\", instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "histogram_quantile(0.99,rate(kubeproxy_sync_proxy_rules_duration_seconds_bucket{cluster=\"$cluster\", job=\"$job\", k8s_node_name=~\"$instance\"}[$__rate_interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -345,7 +345,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "sum(rate(kubeproxy_network_programming_duration_seconds_count{cluster=\"$cluster\", job=\"$job\", instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(kubeproxy_network_programming_duration_seconds_count{cluster=\"$cluster\", job=\"$job\", k8s_node_name=~\"$instance\"}[$__rate_interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "rate",
@@ -437,7 +437,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "histogram_quantile(0.99, sum(rate(kubeproxy_network_programming_duration_seconds_bucket{cluster=\"$cluster\", job=\"$job\", instance=~\"$instance\"}[$__rate_interval])) by (instance, le))",
+          "expr": "histogram_quantile(0.99, sum(rate(kubeproxy_network_programming_duration_seconds_bucket{cluster=\"$cluster\", job=\"$job\", k8s_node_name=~\"$instance\"}[$__rate_interval])) by (instance, le))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -529,7 +529,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\", job=\"$job\", instance=~\"$instance\",code=~\"2..\"}[$__rate_interval]))",
+          "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\", job=\"$job\", k8s_node_name=~\"$instance\",code=~\"2..\"}[$__rate_interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "2xx",
@@ -540,7 +540,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\", job=\"$job\", instance=~\"$instance\",code=~\"3..\"}[$__rate_interval]))",
+          "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\", job=\"$job\", k8s_node_name=~\"$instance\",code=~\"3..\"}[$__rate_interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "3xx",
@@ -551,7 +551,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\", job=\"$job\", instance=~\"$instance\",code=~\"4..\"}[$__rate_interval]))",
+          "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\", job=\"$job\", k8s_node_name=~\"$instance\",code=~\"4..\"}[$__rate_interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "4xx",
@@ -561,7 +561,7 @@
           "datasource": {
             "uid": "$datasource"
           },
-          "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\", job=\"$job\", instance=~\"$instance\",code=~\"5..\"}[$__rate_interval]))",
+          "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\", job=\"$job\", k8s_node_name=~\"$instance\",code=~\"5..\"}[$__rate_interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "5xx",
@@ -651,7 +651,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "histogram_quantile(0.99, sum(rate(rest_client_request_duration_seconds_bucket{cluster=\"$cluster\", job=\"$job\",instance=~\"$instance\",verb=\"POST\"}[$__rate_interval])) by (verb, url, le))",
+          "expr": "histogram_quantile(0.99, sum(rate(rest_client_request_duration_seconds_bucket{cluster=\"$cluster\", job=\"$job\",k8s_node_name=~\"$instance\",verb=\"POST\"}[$__rate_interval])) by (verb, url, le))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{verb}} {{url}}",
@@ -743,7 +743,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "histogram_quantile(0.99, sum(rate(rest_client_request_duration_seconds_bucket{cluster=\"$cluster\", job=\"$job\", instance=~\"$instance\", verb=\"GET\"}[$__rate_interval])) by (verb, url, le))",
+          "expr": "histogram_quantile(0.99, sum(rate(rest_client_request_duration_seconds_bucket{cluster=\"$cluster\", job=\"$job\", k8s_node_name=~\"$instance\", verb=\"GET\"}[$__rate_interval])) by (verb, url, le))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{verb}} {{url}}",
@@ -835,7 +835,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "process_resident_memory_bytes{cluster=\"$cluster\", job=\"$job\",instance=~\"$instance\"}",
+          "expr": "process_resident_memory_bytes{cluster=\"$cluster\", job=\"$job\",k8s_node_name=~\"$instance\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -925,7 +925,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "rate(process_cpu_seconds_total{cluster=\"$cluster\", job=\"$job\",instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "rate(process_cpu_seconds_total{cluster=\"$cluster\", job=\"$job\",k8s_node_name=~\"$instance\"}[$__rate_interval])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -1017,7 +1017,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "expr": "go_goroutines{cluster=\"$cluster\", job=\"$job\",instance=~\"$instance\"}",
+          "expr": "go_goroutines{cluster=\"$cluster\", job=\"$job\",k8s_node_name=~\"$instance\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -1115,7 +1115,7 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
-        "definition": "label_values(up{job=\"$job\", cluster=\"$cluster\"}, instance)",
+        "definition": "label_values(up{job=\"$job\", cluster=\"$cluster\"}, k8s_node_name)",
         "hide": 0,
         "includeAll": true,
         "label": "instance",
@@ -1123,7 +1123,7 @@
         "name": "instance",
         "options": [],
         "query": {
-          "query": "label_values(up{job=\"$job\", cluster=\"$cluster\"}, instance)",
+          "query": "label_values(up{job=\"$job\", cluster=\"$cluster\"}, k8s_node_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
