@@ -1,0 +1,25 @@
+argoNamespace: ''
+argoProject: ''
+
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/aws-observability/aws-observability-accelerator.git
+    targetRevision: main
+
+AMP_ASSUME_ROLE_ARN: 'UPDATE_ME_WITH_AMP_ASSUME_ROLE_ARN'
+AMP_AWS_REGION: 'UPDATE_ME_WITH_AMP_AWS_REGION'
+AMP_ENDPOINT_URL: 'UPDATE_ME_WITH_AMP_ENDPOINT_URL'
+
+CW_ASSUME_ROLE_ARN: 'UPDATE_ME_WITH_CW_ASSUME_ROLE_ARN'
+CW_AWS_REGION: 'UPDATE_ME_WITH_CW_AWS_REGION'
+
+AMG_ENDPOINT_URL: 'UPDATE_ME_WITH_AMG_ENDPOINT_URL_STARTING_WITH_HTTPS'
+
+GRAFANA_CLUSTER_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/cluster.json"
+GRAFANA_KUBELET_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/kubelet.json"
+GRAFANA_NSWRKLDS_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/namespace-workloads.json"
+GRAFANA_NODEEXP_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/nodeexporter-nodes.json"
+GRAFANA_NODES_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/nodes.json"
+GRAFANA_WORKLOADS_DASH_URL: "https://raw.githubusercontent.com/aws-observability/aws-observability-accelerator/main/artifacts/grafana-dashboards/eks/infrastructure/workloads.json"
