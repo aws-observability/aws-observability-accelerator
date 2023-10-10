@@ -8,8 +8,8 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/iamprakkie/aws-observability-accelerator.git
-    targetRevision: artifacts
+    repoURL: https://github.com/aws-observability/aws-observability-accelerator.git
+    targetRevision: main
 
   # Thoses default values can be surcharged by Infrastructure as Code
   env: prod

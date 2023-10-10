@@ -5,8 +5,8 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/iamprakkie/aws-observability-accelerator.git
-    targetRevision: artifacts
+    repoURL: https://github.com/aws-observability/aws-observability-accelerator.git
+    targetRevision: main
 
 AMP_ASSUME_ROLE_ARN: 'UPDATE_ME_WITH_AMP_ASSUME_ROLE_ARN'
 AMP_AWS_REGION: 'UPDATE_ME_WITH_AMP_AWS_REGION'
