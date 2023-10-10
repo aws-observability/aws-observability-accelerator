@@ -1,0 +1,11 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: neuron-monitor-grafanadashboard
+  namespace: grafana-operator
+spec:
+  folder: "Observability Accelerator Dashboards"
+  instanceSelector:
+    matchLabels:
+      dashboards: "external-grafana"
+  url: ${GRAFANA_NEURON_DASH_URL}
