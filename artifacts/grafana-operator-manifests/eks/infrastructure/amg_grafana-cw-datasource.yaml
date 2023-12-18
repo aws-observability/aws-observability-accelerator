@@ -12,6 +12,7 @@ spec:
     type: cloudwatch
     access: server
     isDefault: false
+    url: ""
     jsonData:
       'tlsSkipVerify': false
       'timeInterval': "5s"
