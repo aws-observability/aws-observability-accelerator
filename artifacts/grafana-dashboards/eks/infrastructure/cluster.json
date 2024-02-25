@@ -1,4 +1,38 @@
 {
+  "__inputs": [],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.4.7"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -25,7 +59,6 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1679681754059,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -105,7 +138,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -171,7 +204,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -237,7 +270,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -303,7 +336,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -369,7 +402,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -435,7 +468,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -488,6 +521,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -550,7 +585,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -614,7 +650,10 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
           },
           "decimals": 2,
           "displayName": "",
@@ -869,6 +908,7 @@
       "links": [],
       "options": {
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -877,7 +917,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -1026,6 +1066,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1085,7 +1127,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -1149,7 +1192,10 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
           },
           "decimals": 2,
           "displayName": "",
@@ -1404,6 +1450,7 @@
       "links": [],
       "options": {
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1412,7 +1459,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -1562,7 +1609,10 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
           },
           "decimals": 2,
           "displayName": "",
@@ -1778,10 +1828,11 @@
         "y": 37
       },
       "id": 11,
-      "interval": "1m",
+      "interval": "2m",
       "links": [],
       "options": {
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1790,14 +1841,15 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__interval])) by (namespace)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1810,8 +1862,9 @@
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_bytes_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(irate(container_network_transmit_bytes_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__interval])) by (namespace)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1824,8 +1877,9 @@
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_packets_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(irate(container_network_receive_packets_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__interval])) by (namespace)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1838,8 +1892,9 @@
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_packets_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(irate(container_network_transmit_packets_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__interval])) by (namespace)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1852,8 +1907,9 @@
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_packets_dropped_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(irate(container_network_receive_packets_dropped_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__interval])) by (namespace)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1866,8 +1922,9 @@
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_packets_dropped_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(irate(container_network_transmit_packets_dropped_total{job=\"kubelet\", cluster=\"$cluster\", namespace=~\".+\"}[$__interval])) by (namespace)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1925,6 +1982,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1984,7 +2043,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2021,6 +2081,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -2080,7 +2142,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2143,6 +2206,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -2202,7 +2267,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2239,6 +2305,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -2298,7 +2366,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2361,6 +2430,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -2420,7 +2491,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2457,6 +2529,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -2516,7 +2590,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2580,7 +2655,10 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
           },
           "decimals": 2,
           "displayName": "",
@@ -2632,7 +2710,7 @@
               },
               {
                 "id": "decimals",
-                "value": -1
+                "value": 2
               },
               {
                 "id": "custom.align"
@@ -2655,7 +2733,7 @@
               },
               {
                 "id": "decimals",
-                "value": -1
+                "value": 2
               },
               {
                 "id": "custom.align"
@@ -2678,7 +2756,7 @@
               },
               {
                 "id": "decimals",
-                "value": -1
+                "value": 2
               },
               {
                 "id": "custom.align"
@@ -2796,10 +2874,11 @@
         "y": 69
       },
       "id": 22,
-      "interval": "1m",
+      "interval": "2m",
       "links": [],
       "options": {
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -2808,12 +2887,13 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "exemplar": false,
           "expr": "sum by(namespace) (rate(container_fs_reads_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", cluster=\"$cluster\", namespace!=\"\"}[$__rate_interval]))",
           "format": "table",
@@ -2821,6 +2901,7 @@
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
+          "range": false,
           "refId": "A",
           "step": 10
         },
@@ -2842,6 +2923,7 @@
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "exemplar": false,
           "expr": "sum by(namespace) (rate(container_fs_reads_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", cluster=\"$cluster\", namespace!=\"\"}[$__rate_interval]) + rate(container_fs_writes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", cluster=\"$cluster\", namespace!=\"\"}[$__rate_interval]))",
           "format": "table",
@@ -2908,7 +2990,8 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 35,
+  "revision": 1,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [
     "infrastructure"
@@ -2935,11 +3018,7 @@
         "type": "datasource"
       },
       {
-        "current": {
-          "selected": false,
-          "text": "eks-cluster-with-vpc",
-          "value": "eks-cluster-with-vpc"
-        },
+        "current": {},
         "datasource": {
           "type": "prometheus",
           "uid": "$datasource"
@@ -2997,6 +3076,6 @@
   "timezone": "utc",
   "title": "Kubernetes / Compute Resources / Cluster",
   "uid": "efa86fd1d0c121a26444b636a3f509a8",
-  "version": 23,
+  "version": 7395,
   "weekStart": ""
 }

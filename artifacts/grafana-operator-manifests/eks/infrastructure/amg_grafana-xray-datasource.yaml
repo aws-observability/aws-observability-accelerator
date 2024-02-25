@@ -11,6 +11,7 @@ spec:
     name: aws-observability-accelerator-xray
     type: grafana-x-ray-datasource
     access: server
+    url: ""
     isDefault: false
     jsonData:
       "authType": "ec2_iam_role"
