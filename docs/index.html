@@ -1,20 +1,21 @@
 <!doctype html>
 <html id="root" lang="en" data-theme="dark">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
     <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
     <title>Observability Accelerator</title>
-    <style> 
-        .gradient { 
-            background: linear-gradient(to right, #f32170, 
-                    #ff6b08, #cf23cf, #eedd44); 
-            -webkit-text-fill-color: transparent; 
-            -webkit-background-clip: text; 
+    <style>
+        .gradient {
+            background: linear-gradient(to right, #f32170,
+                    #ff6b08, #cf23cf, #eedd44);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
         }
-    </style> 
+    </style>
     <style>
         .center {
             display: block;
@@ -22,18 +23,23 @@
             margin-right: auto;
         }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <main class="container">
         <section id="section_1">
             <nav>
-                <h3 id="heading">AWS Observability Accelerator 
-                    <img src="img/logo_svg.svg" width="75" alt="Logo SVG"/>
+                <h3 id="heading">AWS Observability Accelerator
+                    <img src="img/logo_svg.svg" width="75" alt="Logo SVG" />
                 </h3>
                 <ul>
-                    <li><a href="https://aws-observability.github.io/terraform-aws-observability-accelerator/">Terraform</a></li>
+                    <li><a
+                            href="https://aws-observability.github.io/terraform-aws-observability-accelerator/">Terraform</a>
+                    </li>
                     <li><a href="https://aws-observability.github.io/cdk-aws-observability-accelerator/">CDK</a></li>
-                    <a href="#"><img _="on click if #root @data-theme is 'light' set #root @data-theme to 'dark' otherwise set #root @data-theme to 'light' " src="img/cloud-sun-solid-orange.svg" width="30" alt="theme_switch" id="theme_switch"></a>
+                    <a href="#"><img
+                            _="on click if #root @data-theme is 'light' set #root @data-theme to 'dark' otherwise set #root @data-theme to 'light' "
+                            src="img/cloud-sun-solid-orange.svg" width="30" alt="theme_switch" id="theme_switch"></a>
                 </ul>
             </nav>
             <img src="img/logo_svg.svg" alt="big_logo" id="big_logo" width="450" class="center">
@@ -41,23 +47,27 @@
             <div class="grid">
                 <article id="feature_1">
                     <div>
-                        <strong>Opinionated</strong> modules to help you set up Amazon Managed Service for Prometheus, Amazon Managed Grafana, AWS Distro for OpenTelemetry (ADOT) and Amazon CloudWatch.   
+                        <strong>Opinionated</strong> modules to help you set up Amazon Managed Service for Prometheus,
+                        Amazon Managed Grafana, AWS Distro for OpenTelemetry (ADOT) and Amazon CloudWatch.
                     </div>
                 </article>
                 <article id="feature_2">
                     <div>
-                        <strong>Curated</strong> metrics, logs, traces collection, alerting rules and Grafana dashboards for your AWS infrastructure and custom applications.
+                        <strong>Curated</strong> metrics, logs, traces collection, alerting rules and Grafana dashboards
+                        for your AWS infrastructure and custom applications.
                     </div>
                 </article>
             </div>
-            <h5>Choose your IAC tool:</h5>
+            <h5>Choose your Infrastructure-as-code tool:</h5>
         </section>
         <section id="section_2">
             <div id="card_grid" class="grid">
-                <button _="on click show #code_block_tera then transition #run_it opacity to 100 then hide #code_block_cdk then set #learn_more @href to 'https://aws-observability.github.io/terraform-aws-observability-accelerator/'">
+                <button
+                    _="on click show #code_block_tera then transition #run_it opacity to 100 then hide #code_block_cdk then set #learn_more @href to 'https://aws-observability.github.io/terraform-aws-observability-accelerator/'">
                     <div id="terraform_button">Terraform Modules</div>
                 </button>
-                <button _="on click show #code_block_cdk then transition #run_it opacity to 100 then hide #code_block_tera then set #learn_more @href to 'https://aws-observability.github.io/cdk-aws-observability-accelerator/'">
+                <button
+                    _="on click show #code_block_cdk then transition #run_it opacity to 100 then hide #code_block_tera then set #learn_more @href to 'https://aws-observability.github.io/cdk-aws-observability-accelerator/'">
                     <div id="terraform_button">CDK Patterns</div>
                 </button>
             </div>
@@ -69,20 +79,23 @@
             <article style="display: none" id="code_block_cdk">
                 <pre><code class="language-shell">cdk deploy</code></pre>
             </article>
-            <button id="run_it" style="opacity: 0" _="on click if my.innerText is 'Run' then transition #dashboard_card opacity to 100 then set my.innerText to 'Clear' otherwise transition #dashboard_card opacity to 0 then set my.innerText to 'Run'">Run</button>
+            <button id="run_it" style="opacity: 0"
+                _="on click if my.innerText is 'Run' then transition #dashboard_card opacity to 100 then set my.innerText to 'Clear' otherwise transition #dashboard_card opacity to 0 then set my.innerText to 'Run'">Run</button>
         </section>
         <section id="section_4">
             <article style="opacity: 0" id="dashboard_card">
-                <img id="dashboard" src="img/dashboard.png" alt="Logo SVG"/>
+                <img id="dashboard" src="img/dashboard.png" alt="Logo SVG" />
             </article>
         </section>
         <section id="section_5">
             <a id="learn_more" href="https://github.com/aws-observability/aws-observability-accelerator">
-                <button id="learn_more" _="on intersection(intersecting) having threshold 0.5 if intersecting transition opacity to 100 else transition opacity to 0">
+                <button id="learn_more"
+                    _="on intersection(intersecting) having threshold 0.5 if intersecting transition opacity to 100 else transition opacity to 0">
                     Learn More
                 </button>
             </a>
         </section>
     </main>
-  </body>
+</body>
+
 </html>
