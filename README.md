@@ -10,9 +10,15 @@ This repository provide shared artifacts (documentation, dashboards, alerting ru
 
 Checkout the project documentation for [Terraform](https://aws-observability.github.io/terraform-aws-observability-accelerator/) and [CDK](https://aws-observability.github.io/cdk-aws-observability-accelerator/) projects for more information.
 
+
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+
+## Related projects
+
+Some of the dashboards have been inspired by the [Prometheus Monitoring Mixin for Kubernetes](https://github.com/kubernetes-monitoring/kubernetes-mixin),
+enhanced to work with AWS Observability services.
 
 ## License
 
