@@ -35,7 +35,7 @@
     {
       "datasource": {
         "type": "grafana-opensearch-datasource",
-        "uid": "${DS_AMAZON_OPENSEARCH}"
+        "uid": "${opensearch_datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -108,7 +108,7 @@
           ],
           "datasource": {
             "type": "grafana-opensearch-datasource",
-            "uid": "${DS_AMAZON_OPENSEARCH}"
+            "uid": "${opensearch_datasource}"
           },
           "format": "table",
           "metrics": [
@@ -129,7 +129,7 @@
     {
       "datasource": {
         "type": "grafana-opensearch-datasource",
-        "uid": "${DS_AMAZON_OPENSEARCH}"
+        "uid": "${opensearch_datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -232,7 +232,7 @@
           ],
           "datasource": {
             "type": "grafana-opensearch-datasource",
-            "uid": "${DS_AMAZON_OPENSEARCH}"
+            "uid": "${opensearch_datasource}"
           },
           "format": "table",
           "metrics": [
@@ -253,7 +253,7 @@
     {
       "datasource": {
         "type": "grafana-opensearch-datasource",
-        "uid": "${DS_AMAZON_OPENSEARCH}"
+        "uid": "${opensearch_datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -355,7 +355,7 @@
           ],
           "datasource": {
             "type": "grafana-opensearch-datasource",
-            "uid": "${DS_AMAZON_OPENSEARCH}"
+            "uid": "${opensearch_datasource}"
           },
           "format": "table",
           "metrics": [
@@ -376,7 +376,7 @@
     {
       "datasource": {
         "type": "grafana-opensearch-datasource",
-        "uid": "${DS_AMAZON_OPENSEARCH}"
+        "uid": "${opensearch_datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -478,7 +478,7 @@
           ],
           "datasource": {
             "type": "grafana-opensearch-datasource",
-            "uid": "${DS_AMAZON_OPENSEARCH}"
+            "uid": "${opensearch_datasource}"
           },
           "format": "table",
           "metrics": [
@@ -512,7 +512,7 @@
     {
       "datasource": {
         "type": "grafana-opensearch-datasource",
-        "uid": "${DS_AMAZON_OPENSEARCH}"
+        "uid": "${opensearch_datasource}"
       },
       "gridPos": {
         "h": 12,
@@ -547,7 +547,7 @@
           ],
           "datasource": {
             "type": "grafana-opensearch-datasource",
-            "uid": "${DS_AMAZON_OPENSEARCH}"
+            "uid": "${opensearch_datasource}"
           },
           "format": "table",
           "metrics": [
@@ -568,7 +568,7 @@
     {
       "datasource": {
         "type": "grafana-opensearch-datasource",
-        "uid": "${DS_AMAZON_OPENSEARCH}"
+        "uid": "${opensearch_datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -699,7 +699,7 @@
           ],
           "datasource": {
             "type": "grafana-opensearch-datasource",
-            "uid": "${DS_AMAZON_OPENSEARCH}"
+            "uid": "${opensearch_datasource}"
           },
           "format": "table",
           "metrics": [
@@ -720,7 +720,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_AMP}"
+        "uid": "${amp_datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -832,7 +832,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_AMP}"
+            "uid": "${amp_datasource}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -850,7 +850,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_AMP}"
+        "uid": "${amp_datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -962,7 +962,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_AMP}"
+            "uid": "${amp_datasource}"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -986,9 +986,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": "AMP",
-          "value": "fdu7xex1t85q8c"
+          "selected": false
         },
         "hide": 0,
         "includeAll": false,
@@ -1005,7 +1003,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Amazon OpenSearch",
           "value": "bdu7z6cnnfitcf"
         },
@@ -1026,7 +1024,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_AMP}"
+          "uid": "${amp_datasource}"
         },
         "definition": "label_values(namespace)",
         "hide": 0,
@@ -1049,7 +1047,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_AMP}"
+          "uid": "${amp_datasource}"
         },
         "definition": "label_values({namespace=~\"$namespace\"},pod)",
         "hide": 0,
@@ -1072,7 +1070,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_AMP}"
+          "uid": "${amp_datasource}"
         },
         "definition": "label_values({namespace=~\"$namespace\", pod=~\"$pod\"},container)",
         "hide": 0,
