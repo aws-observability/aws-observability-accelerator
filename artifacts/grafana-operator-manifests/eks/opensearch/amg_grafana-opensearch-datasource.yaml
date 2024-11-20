@@ -9,7 +9,8 @@ spec:
       dashboards: "external-grafana"
   datasource:
     name: aws-observability-accelerator-opensearch
-    type: opensearch
+    type: grafana-opensearch-datasource
+    typeName: OpenSearch
     access: proxy
     url: ${OPENSEARCH_DOMAIN_URL}
     isDefault: false
