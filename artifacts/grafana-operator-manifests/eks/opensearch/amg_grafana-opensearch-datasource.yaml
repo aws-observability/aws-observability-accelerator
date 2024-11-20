@@ -10,7 +10,6 @@ spec:
   datasource:
     name: aws-observability-accelerator-opensearch
     type: grafana-opensearch-datasource
-    typeName: OpenSearch
     access: proxy
     url: ${OPENSEARCH_DOMAIN_URL}
     isDefault: false
