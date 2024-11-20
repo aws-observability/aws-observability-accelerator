@@ -16,7 +16,7 @@ spec:
     jsonData:
       'flavor': "opensearch"
       'logLevelField': "severityText"
-      'logMessageField': "body"
+      'logMessageField': "log"
       'maxConcurrentShardRequests': "20"
       'pplEnabled': true
       'serverless': false
