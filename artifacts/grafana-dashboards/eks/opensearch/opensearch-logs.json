@@ -90,7 +90,7 @@
           "alias": "",
           "bucketAggs": [
             {
-              "field": "resource.attributes.k8s@namespace@name.keyword",
+              "field": "kubernetes.namespace_name.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": "1",
@@ -120,7 +120,7 @@
               "type": "count"
             }
           ],
-          "query": "body:[* TO *]",
+          "query": "",
           "queryType": "lucene",
           "refId": "A",
           "timeField": "@timestamp"
@@ -214,7 +214,7 @@
           "alias": "",
           "bucketAggs": [
             {
-              "field": "resource.attributes.k8s@namespace@name.keyword",
+              "field": "kubernetes.namespace_name.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": "1",
@@ -244,7 +244,7 @@
               "type": "count"
             }
           ],
-          "query": "body:[* TO *]",
+          "query": "",
           "queryType": "lucene",
           "refId": "A",
           "timeField": "@timestamp"
@@ -337,7 +337,7 @@
           "alias": "",
           "bucketAggs": [
             {
-              "field": "resource.attributes.k8s@pod@name.keyword",
+              "field": "kubernetes.pod_name.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": "1",
@@ -367,7 +367,7 @@
               "type": "count"
             }
           ],
-          "query": "resource.attributes.k8s@namespace@name:\"$namespace\"\nAND body:[* TO *]",
+          "query": "kubernetes.namespace_name:\"$namespace\"",
           "queryType": "lucene",
           "refId": "A",
           "timeField": "@timestamp"
@@ -460,7 +460,7 @@
           "alias": "",
           "bucketAggs": [
             {
-              "field": "resource.attributes.k8s@container@name.keyword",
+              "field": "kubernetes.container_name.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": "1",
@@ -490,7 +490,7 @@
               "type": "count"
             }
           ],
-          "query": "resource.attributes.k8s@namespace@name:\"$namespace\" AND resource.attributes.k8s@pod@name:\"$pod\"\nAND body:[* TO *]",
+          "query": "kubernetes.namespace_name:\"$namespace\" AND kubernetes.pod_name:\"$pod\"",
           "queryType": "lucene",
           "refId": "A",
           "timeField": "@timestamp"
@@ -559,7 +559,7 @@
               "type": "logs"
             }
           ],
-          "query": "resource.attributes.k8s@namespace@name:\"$namespace\"\nAND resource.attributes.k8s@pod@name:\"$pod\"\nAND resource.attributes.k8s@container@name:\"$container\"\nAND body:[* TO *]",
+          "query": "kubernetes.namespace_name:\"$namespace\"\nAND kubernetes.pod_name:\"$pod\"\nAND kubernetes.container_name:\"$container\"",
           "queryType": "lucene",
           "refId": "A",
           "timeField": "@timestamp"
@@ -711,7 +711,7 @@
               "type": "count"
             }
           ],
-          "query": "resource.attributes.k8s@namespace@name:\"$namespace\"\nAND resource.attributes.k8s@pod@name:\"$pod\"\nAND resource.attributes.k8s@container@name:\"$container\"\nAND body:[* TO *]",
+          "query": "kubernetes.namespace_name:\"$namespace\"\nAND kubernetes.pod_name:\"$pod\"\nAND kubernetes.container_name:\"$container\"",
           "queryType": "lucene",
           "refId": "A",
           "timeField": "@timestamp"
