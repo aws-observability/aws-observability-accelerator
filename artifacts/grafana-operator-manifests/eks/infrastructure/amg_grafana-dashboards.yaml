@@ -69,3 +69,28 @@ spec:
     matchLabels:
       dashboards: "external-grafana"
   url: ${GRAFANA_WORKLOADS_DASH_URL}
+
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: ksh-grafanadashboard
+  namespace: grafana-operator
+spec:
+  folder: "Observability Accelerator Dashboards"
+  instanceSelector:
+    matchLabels:
+      dashboards: "external-grafana"
+  url: ${GRAFANA_KSH_DASH_URL}
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: kcm-grafanadashboard
+  namespace: grafana-operator
+spec:
+  folder: "Observability Accelerator Dashboards"
+  instanceSelector:
+    matchLabels:
+      dashboards: "external-grafana"
+  url: ${GRAFANA_KCM_DASH_URL}
