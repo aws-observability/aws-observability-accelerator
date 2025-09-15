@@ -323,9 +323,8 @@
           "label": "",
           "logGroups": [
             {
-              "accountId": "891377329523",
-              "arn": "arn:aws:logs:us-east-2:891377329523:log-group:/aws/vendedlogs/amp/o11y-demo:*",
-              "name": "/aws/vendedlogs/amp/o11y-demo"
+              "arn": "$AMPVendedLog",
+              "name": "$AMPVendedLog"
             }
           ],
           "matchExact": true,
@@ -369,7 +368,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-yellow"
+                "color": "semi-dark-yellow",
+                "value": null
               },
               {
                 "color": "transparent",
@@ -459,7 +459,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               },
               {
                 "color": "red",
@@ -549,7 +550,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               },
               {
                 "color": "red",
@@ -674,7 +676,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -782,7 +785,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -890,7 +894,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1026,6 +1031,31 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "cloudwatch",
+          "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "AMP Vended Log",
+        "multi": false,
+        "name": "AMPVendedLog",
+        "options": [],
+        "query": {
+          "logGroupPrefix": "/aws/vendedlogs",
+          "queryType": "logGroups",
+          "refId": "CloudWatchVariableQueryEditor-VariableQuery",
+          "region": "default"
+        },
+        "refresh": 1,
+        "regex": "/.*(?:prometheus|amp).*/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -1037,6 +1067,6 @@
   "timezone": "browser",
   "title": "AMP Alerts and Recording Rules",
   "uid": "deme0g13gg9hca",
-  "version": 54,
+  "version": 55,
   "weekStart": ""
 }
