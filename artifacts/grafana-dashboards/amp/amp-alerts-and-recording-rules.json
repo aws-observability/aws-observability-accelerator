@@ -1,0 +1,1072 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_AMP",
+      "label": "AMP",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    },
+    {
+      "name": "DS_AMAZON_CLOUDWATCH US-EAST-2",
+      "label": "Amazon CloudWatch us-east-2",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "cloudwatch",
+      "pluginName": "CloudWatch"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "datasource",
+      "id": "cloudwatch",
+      "name": "CloudWatch",
+      "version": "1.0.0"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.4.1"
+    },
+    {
+      "type": "panel",
+      "id": "logs",
+      "name": "Logs",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "state-timeline",
+      "name": "State timeline",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 14,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div class=\"container\" style=\"display: flex; align-items: center; padding: 20px; margin: 0;\">\n    <div class=\"left-div\" style=\"flex: 0 0 auto; margin-right: 20px;\">\n        <img id=\"amp-logo\" alt=\"AMP Logo\" style=\"width: 40px; height: 40px;\" src=\"data:image/png;base64,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\" />\n    </div>\n    <div class=\"right-div\" style=\"flex: 1 1 auto;\">\n        <h1 style=\"margin: 0; font-family: Arial, sans-serif;\">AMP Alerts and Recording Rules</h1>\n    </div>\n</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "10.4.1",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "id": 4,
+      "panels": [],
+      "title": "Alerts' State Over Time",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_AMP}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 100,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": 3600000,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "firing": {
+                  "color": "red",
+                  "index": 1
+                },
+                "pending": {
+                  "color": "text",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "transparent",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 16,
+        "x": 0,
+        "y": 4
+      },
+      "id": 1,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_AMP}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (alertname, alertstate) (ALERTS{alertname=~\"$Alert\", alertstate=~\"$State\", severity=~\"$Severity\"})",
+          "format": "table",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "groupingToMatrix",
+          "options": {
+            "columnField": "alertname",
+            "rowField": "Time",
+            "valueField": "alertstate"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "time",
+                "targetField": "Time\\alertname"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "state-timeline"
+    },
+    {
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 16,
+        "y": 4
+      },
+      "id": 2,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "## ALERTS Metric\n\nYou can check if the alert you created has fired or not within AMP by querying for the synthetic time series, ALERTS. \n\nThe ALERTS time series can be distinguished with the following labels:\n\n* alertname: The name of the alert that is firing\n* alertstate: Can be either pending or firing.\n    * When an alert is in the pending state, the alert is currently waiting for a period of time (defined by the for clause in the rule) after which it would transition to firing once satisfied.\n\nWhile an alert is firing or pending, the sample value is set to 1. When your alert is idling, no samples will be produced.\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.4.1",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 5,
+      "panels": [],
+      "title": "AMP Vended Logs",
+      "type": "row"
+    },
+    {
+      "gridPos": {
+        "h": 21,
+        "w": 8,
+        "x": 0,
+        "y": 16
+      },
+      "id": 6,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "## Using Vended Logs\n\nhttps://docs.aws.amazon.com/prometheus/latest/userguide/CW-logs.html\n\nThe ListRules API only returns the most recent information for your rule. By enabling vended logs in your workspace, you can access a more detailed history of your previous rule evaluations including the approximate timestamp of when an evaluation failure occurred.\n\nSample vended logs message\n\n```javascript\n{\n    \"workspaceId\": \"ws-123456789\",\n    \"message\": {\n        \"log\": \"Evaluating rule failed, name=broken_alerting_rule, group=my_rule_group, namespace=my_namespace, err=vector contains metrics with the same labelset after applying alert labels\",\n        \"level\": \"ERROR\",\n        \"name\": \"broken_alerting_rule\",\n        \"group\": \"my_rule_group\",\n        \"namespace\": \"my_namespace\"\n    },\n    \"component\": \"ruler\"\n}\n```\n*Vended Logs example*\n\nFor more examples of logs vended by Ruler or Alertmanager, see our following documentation:\n- https://docs.aws.amazon.com/prometheus/latest/userguide/Troubleshooting-rule-fail-error.html\n- https://docs.aws.amazon.com/prometheus/latest/userguide/Troubleshooting-alerting.html\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.4.1",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+      },
+      "gridPos": {
+        "h": 21,
+        "w": 16,
+        "x": 8,
+        "y": 16
+      },
+      "id": 3,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": true,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": false,
+        "sortOrder": "Descending",
+        "wrapLogMessage": true
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+          },
+          "dimensions": {},
+          "expression": "fields @timestamp, @message |\n filter message.name like /$Alert/ |\n sort @timestamp desc |\n limit 20",
+          "id": "",
+          "label": "",
+          "logGroups": [
+            {
+              "arn": "$AMPVendedLog",
+              "name": "$AMPVendedLog"
+            }
+          ],
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "",
+          "metricQueryType": 0,
+          "namespace": "",
+          "period": "",
+          "queryMode": "Logs",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Average",
+          "statsGroups": []
+        }
+      ],
+      "type": "logs"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 13,
+      "panels": [],
+      "title": "Rule Groups' Metrics",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-yellow",
+                "value": null
+              },
+              {
+                "color": "transparent",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "rule evaluations"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 0,
+        "y": 38
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+          },
+          "dimensions": {},
+          "expression": "",
+          "id": "",
+          "label": "",
+          "logGroups": [],
+          "matchExact": false,
+          "metricEditorMode": 0,
+          "metricName": "RuleEvaluations",
+          "metricQueryType": 0,
+          "namespace": "AWS/Prometheus",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "index": {
+              "asPercentile": false
+            },
+            "mode": "reduceRow",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "transparent",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "rule evaluation failures"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 8,
+        "y": 38
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+          },
+          "dimensions": {},
+          "expression": "",
+          "id": "",
+          "label": "",
+          "logGroups": [],
+          "matchExact": false,
+          "metricEditorMode": 0,
+          "metricName": "RuleEvaluationFailures",
+          "metricQueryType": 0,
+          "namespace": "AWS/Prometheus",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "index": {
+              "asPercentile": false
+            },
+            "mode": "reduceRow",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "transparent",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "rule group interations missed"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 16,
+        "y": 38
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+          },
+          "dimensions": {},
+          "expression": "",
+          "id": "",
+          "label": "",
+          "logGroups": [],
+          "matchExact": false,
+          "metricEditorMode": 0,
+          "metricName": "RuleGroupIterationsMissed",
+          "metricQueryType": 0,
+          "namespace": "AWS/Prometheus",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "index": {
+              "asPercentile": false
+            },
+            "mode": "reduceRow",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-reds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 42,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 40
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Total",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+          },
+          "dimensions": {},
+          "expression": "",
+          "id": "",
+          "label": "",
+          "logGroups": [],
+          "matchExact": false,
+          "metricEditorMode": 0,
+          "metricName": "RuleEvaluations",
+          "metricQueryType": 0,
+          "namespace": "AWS/Prometheus",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        }
+      ],
+      "title": "Rule Evaluations",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-reds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 42,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 47
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Total",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+          },
+          "dimensions": {},
+          "expression": "",
+          "id": "",
+          "label": "",
+          "logGroups": [],
+          "matchExact": false,
+          "metricEditorMode": 0,
+          "metricName": "RuleEvaluationFailures",
+          "metricQueryType": 0,
+          "namespace": "AWS/Prometheus",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        }
+      ],
+      "title": "Rule Evaluation Failures",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-reds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 54
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+          },
+          "dimensions": {},
+          "expression": "",
+          "id": "",
+          "label": "",
+          "logGroups": [],
+          "matchExact": false,
+          "metricEditorMode": 0,
+          "metricName": "RuleGroupIterationsMissed",
+          "metricQueryType": 0,
+          "namespace": "AWS/Prometheus",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        }
+      ],
+      "title": "Rule Group Interations Missed",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": "",
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_AMP}"
+        },
+        "definition": "label_values(ALERTS,alertstate)",
+        "hide": 0,
+        "includeAll": true,
+        "multi": false,
+        "name": "State",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(ALERTS,alertstate)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": "",
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_AMP}"
+        },
+        "definition": "label_values(ALERTS{alertstate=~\"$State\"},severity)",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "Severity",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(ALERTS{alertstate=~\"$State\"},severity)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_AMP}"
+        },
+        "definition": "label_values(ALERTS{alertstate=~\"$State\", severity=~\"$Severity\"},alertname)",
+        "hide": 0,
+        "includeAll": true,
+        "multi": false,
+        "name": "Alert",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(ALERTS{alertstate=~\"$State\", severity=~\"$Severity\"},alertname)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "cloudwatch",
+          "uid": "${DS_AMAZON_CLOUDWATCH US-EAST-2}"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "AMP Vended Log",
+        "multi": false,
+        "name": "AMPVendedLog",
+        "options": [],
+        "query": {
+          "logGroupPrefix": "/aws/vendedlogs",
+          "queryType": "logGroups",
+          "refId": "CloudWatchVariableQueryEditor-VariableQuery",
+          "region": "default"
+        },
+        "refresh": 1,
+        "regex": "/.*(?:prometheus|amp).*/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "AMP Alerts and Recording Rules",
+  "uid": "deme0g13gg9hca",
+  "version": 55,
+  "weekStart": ""
+}
