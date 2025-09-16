@@ -1,0 +1,29 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: grafanadatasource-opensearch
+  namespace: grafana-operator
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "external-grafana"
+  datasource:
+    name: aws-observability-accelerator-opensearch
+    type: grafana-opensearch-datasource
+    access: proxy
+    url: ${OPENSEARCH_DOMAIN_URL}
+    isDefault: false
+    jsonData:
+      'flavor': "opensearch"
+      'logLevelField': "severityText"
+      'logMessageField': "log"
+      'maxConcurrentShardRequests': "20"
+      'pplEnabled': true
+      'serverless': false
+      'sigV4Auth': true
+      'sigV4AuthType': "ec2_iam_role"
+      'sigV4Region': ${AMG_AWS_REGION}
+      'timeField': "@timestamp"
+      'version': "2.15.0"
+      'versionLabel': "OpenSearch 2.15.0"
+    editable: true
