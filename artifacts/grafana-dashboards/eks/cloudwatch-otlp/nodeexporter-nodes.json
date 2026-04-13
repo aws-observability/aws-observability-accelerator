@@ -1276,11 +1276,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "label_values(kube_node_info, k8s_cluster_name)",
+          "query": "query_result(count by (`@resource.k8s.cluster.name`) (kube_node_info))",
           "refId": "Prometheus-cluster-Variable-Query"
         },
         "refresh": 2,
-        "regex": "",
+        "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "type": "query",
@@ -1302,11 +1302,11 @@
         "name": "aws_account",
         "options": [],
         "query": {
-          "query": "label_values(kube_node_info, aws_account)",
+          "query": "query_result(count by (`@aws.account`) (kube_node_info))",
           "refId": "Prometheus-account-Variable-Query"
         },
         "refresh": 2,
-        "regex": "",
+        "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "type": "query",
@@ -1339,11 +1339,11 @@
         "name": "instance",
         "options": [],
         "query": {
-          "query": "label_values(kube_node_info, node)",
+          "query": "query_result(count by (`@resource.k8s.node.name`) (kube_node_info))",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
-        "regex": "",
+        "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",

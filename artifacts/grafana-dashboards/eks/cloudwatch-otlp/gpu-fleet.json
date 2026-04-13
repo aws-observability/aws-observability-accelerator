@@ -1970,11 +1970,12 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "label_values(DCGM_FI_DEV_GPU_UTIL, `@resource.k8s.cluster.name`)",
-          "refId": "cluster"
+          "query": "query_result(count by (`@resource.k8s.cluster.name`) (DCGM_FI_DEV_GPU_UTIL))",
+          "refId": "cluster",
+          "qryType": 3
         },
         "refresh": 1,
-        "regex": "",
+        "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "type": "query"

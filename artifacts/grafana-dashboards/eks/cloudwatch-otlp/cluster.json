@@ -209,7 +209,7 @@
           "datasource": {
             "uid": "$datasource"
           },
-          "expr": "sum((sum(kube_pod_container_resource_requests{resource=\"cpu\"}) by (namespace))) / sum(kube_node_status_allocatable{job=\"kube-state-metrics\",resource=\"cpu\"})",
+          "expr": "sum((sum(kube_pod_container_resource_requests{resource=\"cpu\"}) by (`@resource.k8s.namespace.name`))) / sum(kube_node_status_allocatable{resource=\"cpu\"})",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 2,
@@ -275,7 +275,7 @@
           "datasource": {
             "uid": "$datasource"
           },
-          "expr": "sum((sum(kube_pod_container_resource_limits{resource=\"cpu\"}) by (namespace))) / sum(kube_node_status_allocatable{job=\"kube-state-metrics\",resource=\"cpu\"})",
+          "expr": "sum((sum(kube_pod_container_resource_limits{resource=\"cpu\"}) by (`@resource.k8s.namespace.name`))) / sum(kube_node_status_allocatable{resource=\"cpu\"})",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 2,
@@ -407,7 +407,7 @@
           "datasource": {
             "uid": "$datasource"
           },
-          "expr": "sum((sum(kube_pod_container_resource_requests{resource=\"memory\"}) by (namespace))) / sum(kube_node_status_allocatable{job=\"kube-state-metrics\",resource=\"memory\"})",
+          "expr": "sum((sum(kube_pod_container_resource_requests{resource=\"memory\"}) by (`@resource.k8s.namespace.name`))) / sum(kube_node_status_allocatable{resource=\"memory\"})",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 2,
@@ -473,7 +473,7 @@
           "datasource": {
             "uid": "$datasource"
           },
-          "expr": "sum((sum(kube_pod_container_resource_limits{resource=\"memory\"}) by (namespace))) / sum(kube_node_status_allocatable{job=\"kube-state-metrics\",resource=\"memory\"})",
+          "expr": "sum((sum(kube_pod_container_resource_limits{resource=\"memory\"}) by (`@resource.k8s.namespace.name`))) / sum(kube_node_status_allocatable{resource=\"memory\"})",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 2,
@@ -599,7 +599,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum((sum(irate(container_cpu_usage_seconds_total[5m])) by (namespace, pod, container, node))) by (namespace)",
+          "expr": "sum((sum(irate(container_cpu_usage_seconds_total[5m])) by (`@resource.k8s.namespace.name`, `@resource.k8s.pod.name`, `@resource.k8s.container.name`, `@resource.k8s.node.name`))) by (`@resource.k8s.namespace.name`)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -923,7 +923,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(kube_pod_owner{job=\"kube-state-metrics\"}) by (namespace)",
+          "expr": "sum(kube_pod_owner) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -937,7 +937,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "count(avg((max(kube_pod_owner{owner_kind=~\"ReplicaSet|StatefulSet|DaemonSet|Job\"}) by (namespace, workload, pod, workload_type))) by (workload, namespace)) by (namespace)",
+          "expr": "count(avg((max(kube_pod_owner{`@resource.k8s.workload.type`=~\"ReplicaSet|StatefulSet|DaemonSet|Job\"}) by (`@resource.k8s.namespace.name`, `@resource.k8s.workload.name`, `@resource.k8s.pod.name`, `@resource.k8s.workload.type`))) by (`@resource.k8s.workload.name`, `@resource.k8s.namespace.name`)) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -951,7 +951,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum((sum(irate(container_cpu_usage_seconds_total[5m])) by (namespace, pod, container, node))) by (namespace)",
+          "expr": "sum((sum(irate(container_cpu_usage_seconds_total[5m])) by (`@resource.k8s.namespace.name`, `@resource.k8s.pod.name`, `@resource.k8s.container.name`, `@resource.k8s.node.name`))) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -965,7 +965,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum((sum(kube_pod_container_resource_requests{resource=\"cpu\"}) by (namespace))) by (namespace)",
+          "expr": "sum((sum(kube_pod_container_resource_requests{resource=\"cpu\"}) by (`@resource.k8s.namespace.name`))) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -979,7 +979,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum((sum(irate(container_cpu_usage_seconds_total[5m])) by (namespace, pod, container, node))) by (namespace) / sum((sum(kube_pod_container_resource_requests{resource=\"cpu\"}) by (namespace))) by (namespace)",
+          "expr": "sum((sum(irate(container_cpu_usage_seconds_total[5m])) by (`@resource.k8s.namespace.name`, `@resource.k8s.pod.name`, `@resource.k8s.container.name`, `@resource.k8s.node.name`))) by (`@resource.k8s.namespace.name`) / sum((sum(kube_pod_container_resource_requests{resource=\"cpu\"}) by (`@resource.k8s.namespace.name`))) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -993,7 +993,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum((sum(kube_pod_container_resource_limits{resource=\"cpu\"}) by (namespace))) by (namespace)",
+          "expr": "sum((sum(kube_pod_container_resource_limits{resource=\"cpu\"}) by (`@resource.k8s.namespace.name`))) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1007,7 +1007,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum((sum(irate(container_cpu_usage_seconds_total[5m])) by (namespace, pod, container, node))) by (namespace) / sum((sum(kube_pod_container_resource_limits{resource=\"cpu\"}) by (namespace))) by (namespace)",
+          "expr": "sum((sum(irate(container_cpu_usage_seconds_total[5m])) by (`@resource.k8s.namespace.name`, `@resource.k8s.pod.name`, `@resource.k8s.container.name`, `@resource.k8s.node.name`))) by (`@resource.k8s.namespace.name`) / sum((sum(kube_pod_container_resource_limits{resource=\"cpu\"}) by (`@resource.k8s.namespace.name`))) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1141,7 +1141,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(container_memory_rss{job=\"kubelet\", container!=\"\"}) by (namespace)",
+          "expr": "sum(container_memory_rss{job=\"kubelet\", container!=\"\"}) by (`@resource.k8s.namespace.name`)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1465,7 +1465,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(kube_pod_owner{job=\"kube-state-metrics\"}) by (namespace)",
+          "expr": "sum(kube_pod_owner) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1479,7 +1479,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "count(avg((max(kube_pod_owner{owner_kind=~\"ReplicaSet|StatefulSet|DaemonSet|Job\"}) by (namespace, workload, pod, workload_type))) by (workload, namespace)) by (namespace)",
+          "expr": "count(avg((max(kube_pod_owner{`@resource.k8s.workload.type`=~\"ReplicaSet|StatefulSet|DaemonSet|Job\"}) by (`@resource.k8s.namespace.name`, `@resource.k8s.workload.name`, `@resource.k8s.pod.name`, `@resource.k8s.workload.type`))) by (`@resource.k8s.workload.name`, `@resource.k8s.namespace.name`)) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1493,7 +1493,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(container_memory_rss{job=\"kubelet\", container!=\"\"}) by (namespace)",
+          "expr": "sum(container_memory_rss{job=\"kubelet\", container!=\"\"}) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1507,7 +1507,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum((sum(kube_pod_container_resource_requests{resource=\"memory\"}) by (namespace))) by (namespace)",
+          "expr": "sum((sum(kube_pod_container_resource_requests{resource=\"memory\"}) by (`@resource.k8s.namespace.name`))) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1521,7 +1521,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(container_memory_rss{job=\"kubelet\", container!=\"\"}) by (namespace) / sum((sum(kube_pod_container_resource_requests{resource=\"memory\"}) by (namespace))) by (namespace)",
+          "expr": "sum(container_memory_rss{job=\"kubelet\", container!=\"\"}) by (`@resource.k8s.namespace.name`) / sum((sum(kube_pod_container_resource_requests{resource=\"memory\"}) by (`@resource.k8s.namespace.name`))) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1535,7 +1535,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum((sum(kube_pod_container_resource_limits{resource=\"memory\"}) by (namespace))) by (namespace)",
+          "expr": "sum((sum(kube_pod_container_resource_limits{resource=\"memory\"}) by (`@resource.k8s.namespace.name`))) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1549,7 +1549,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(container_memory_rss{job=\"kubelet\", container!=\"\"}) by (namespace) / sum((sum(kube_pod_container_resource_limits{resource=\"memory\"}) by (namespace))) by (namespace)",
+          "expr": "sum(container_memory_rss{job=\"kubelet\", container!=\"\"}) by (`@resource.k8s.namespace.name`) / sum((sum(kube_pod_container_resource_limits{resource=\"memory\"}) by (`@resource.k8s.namespace.name`))) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1848,7 +1848,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", namespace=~\".+\"}[$__interval])) by (namespace)",
+          "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", `@resource.k8s.namespace.name`=~\".+\"}[$__interval])) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1863,7 +1863,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_bytes_total{job=\"kubelet\", namespace=~\".+\"}[$__interval])) by (namespace)",
+          "expr": "sum(irate(container_network_transmit_bytes_total{job=\"kubelet\", `@resource.k8s.namespace.name`=~\".+\"}[$__interval])) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1878,7 +1878,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_packets_total{job=\"kubelet\", namespace=~\".+\"}[$__interval])) by (namespace)",
+          "expr": "sum(irate(container_network_receive_packets_total{job=\"kubelet\", `@resource.k8s.namespace.name`=~\".+\"}[$__interval])) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1893,7 +1893,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_packets_total{job=\"kubelet\", namespace=~\".+\"}[$__interval])) by (namespace)",
+          "expr": "sum(irate(container_network_transmit_packets_total{job=\"kubelet\", `@resource.k8s.namespace.name`=~\".+\"}[$__interval])) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1908,7 +1908,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_packets_dropped_total{job=\"kubelet\", namespace=~\".+\"}[$__interval])) by (namespace)",
+          "expr": "sum(irate(container_network_receive_packets_dropped_total{job=\"kubelet\", `@resource.k8s.namespace.name`=~\".+\"}[$__interval])) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1923,7 +1923,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_packets_dropped_total{job=\"kubelet\", namespace=~\".+\"}[$__interval])) by (namespace)",
+          "expr": "sum(irate(container_network_transmit_packets_dropped_total{job=\"kubelet\", `@resource.k8s.namespace.name`=~\".+\"}[$__interval])) by (`@resource.k8s.namespace.name`)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2057,7 +2057,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", namespace=~\".+\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", `@resource.k8s.namespace.name`=~\".+\"}[$__rate_interval])) by (`@resource.k8s.namespace.name`)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2156,7 +2156,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_bytes_total{job=\"kubelet\", namespace=~\".+\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(irate(container_network_transmit_bytes_total{job=\"kubelet\", `@resource.k8s.namespace.name`=~\".+\"}[$__rate_interval])) by (`@resource.k8s.namespace.name`)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2281,7 +2281,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_packets_dropped_total{job=\"kubelet\", namespace=~\".+\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(irate(container_network_receive_packets_dropped_total{job=\"kubelet\", `@resource.k8s.namespace.name`=~\".+\"}[$__rate_interval])) by (`@resource.k8s.namespace.name`)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2380,7 +2380,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_packets_dropped_total{job=\"kubelet\", namespace=~\".+\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(irate(container_network_transmit_packets_dropped_total{job=\"kubelet\", `@resource.k8s.namespace.name`=~\".+\"}[$__rate_interval])) by (`@resource.k8s.namespace.name`)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2505,7 +2505,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "ceil(sum by(namespace) (rate(container_fs_reads_total{job=\"kubelet\", container!=\"\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", namespace!=\"\"}[$__rate_interval]) + rate(container_fs_writes_total{job=\"kubelet\", container!=\"\", namespace!=\"\"}[$__rate_interval])))",
+          "expr": "ceil(sum by(`@resource.k8s.namespace.name`) (rate(container_fs_reads_total{job=\"kubelet\", container!=\"\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", namespace!=\"\"}[$__rate_interval]) + rate(container_fs_writes_total{job=\"kubelet\", container!=\"\", namespace!=\"\"}[$__rate_interval])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2604,7 +2604,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum by(namespace) (rate(container_fs_reads_bytes_total{job=\"kubelet\", container!=\"\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", namespace!=\"\"}[$__rate_interval]) + rate(container_fs_writes_bytes_total{job=\"kubelet\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
+          "expr": "sum by(`@resource.k8s.namespace.name`) (rate(container_fs_reads_bytes_total{job=\"kubelet\", container!=\"\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", namespace!=\"\"}[$__rate_interval]) + rate(container_fs_writes_bytes_total{job=\"kubelet\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2894,7 +2894,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum by(namespace) (rate(container_fs_reads_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
+          "expr": "sum by(`@resource.k8s.namespace.name`) (rate(container_fs_reads_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2909,7 +2909,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum by(namespace) (rate(container_fs_writes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
+          "expr": "sum by(`@resource.k8s.namespace.name`) (rate(container_fs_writes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2924,7 +2924,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum by(namespace) (rate(container_fs_reads_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]) + rate(container_fs_writes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
+          "expr": "sum by(`@resource.k8s.namespace.name`) (rate(container_fs_reads_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]) + rate(container_fs_writes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2938,7 +2938,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum by(namespace) (rate(container_fs_reads_bytes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
+          "expr": "sum by(`@resource.k8s.namespace.name`) (rate(container_fs_reads_bytes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2952,7 +2952,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum by(namespace) (rate(container_fs_writes_bytes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
+          "expr": "sum by(`@resource.k8s.namespace.name`) (rate(container_fs_writes_bytes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2966,7 +2966,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum by(namespace) (rate(container_fs_reads_bytes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]) + rate(container_fs_writes_bytes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
+          "expr": "sum by(`@resource.k8s.namespace.name`) (rate(container_fs_reads_bytes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]) + rate(container_fs_writes_bytes_total{job=\"kubelet\", device=~\"mmcblk.p.+|.*nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\", container!=\"\", namespace!=\"\"}[$__rate_interval]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -3029,11 +3029,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "label_values(kube_node_info, k8s_cluster_name)",
+          "query": "query_result(count by (`@resource.k8s.cluster.name`) (kube_node_info))",
           "refId": "Prometheus-cluster-Variable-Query"
         },
         "refresh": 2,
-        "regex": "",
+        "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "type": "query",
@@ -3055,11 +3055,11 @@
         "name": "aws_account",
         "options": [],
         "query": {
-          "query": "label_values(kube_node_info, aws_account)",
+          "query": "query_result(count by (`@aws.account`) (kube_node_info))",
           "refId": "Prometheus-account-Variable-Query"
         },
         "refresh": 2,
-        "regex": "",
+        "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "type": "query",

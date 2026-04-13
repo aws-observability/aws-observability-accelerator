@@ -3560,11 +3560,12 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "label_values(node_cpu_seconds_total, `@resource.k8s.cluster.name`)",
-          "refId": "StandardVariableQuery"
+          "query": "query_result(count by (`@resource.k8s.cluster.name`) (node_cpu_seconds_total))",
+          "refId": "StandardVariableQuery",
+          "qryType": 3
         },
         "refresh": 2,
-        "regex": "",
+        "regex": "/.*=\"(.+)\".*/",
         "sort": 1,
         "type": "query"
       },
@@ -3582,11 +3583,12 @@
         "name": "instance",
         "options": [],
         "query": {
-          "query": "label_values(node_uname_info{`@resource.k8s.cluster.name`=\"$cluster\"}, `@resource.k8s.node.name`)",
-          "refId": "StandardVariableQuery"
+          "query": "query_result(count by (`@resource.k8s.node.name`) (node_uname_info{`@resource.k8s.cluster.name`=\"$cluster\"}))",
+          "refId": "StandardVariableQuery",
+          "qryType": 3
         },
         "refresh": 2,
-        "regex": "",
+        "regex": "/.*=\"(.+)\".*/",
         "type": "query"
       },
       {
@@ -3603,11 +3605,12 @@
         "name": "instance_id",
         "options": [],
         "query": {
-          "query": "label_values(node_uname_info{`@resource.k8s.cluster.name`=\"$cluster\"}, `@resource.host.id`)",
-          "refId": "StandardVariableQuery"
+          "query": "query_result(count by (`@resource.host.id`) (node_uname_info{`@resource.k8s.cluster.name`=\"$cluster\"}))",
+          "refId": "StandardVariableQuery",
+          "qryType": 3
         },
         "refresh": 2,
-        "regex": "",
+        "regex": "/.*=\"(.+)\".*/",
         "sort": 1,
         "type": "query"
       },
@@ -3625,11 +3628,11 @@
         "name": "nodegroup",
         "options": [],
         "query": {
-          "query": "label_values(node_uname_info{`@resource.k8s.cluster.name`=\"$cluster\"}, @resource.k8s.node.label.eks.amazonaws.com/nodegroup)",
+          "query": "query_result(count by (`@resource.k8s.node.label.eks.amazonaws.com/nodegroup`) (node_uname_info{`@resource.k8s.cluster.name`=\"$cluster\"}))",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
-        "regex": "",
+        "regex": "/.*=\"(.+)\".*/",
         "sort": 1,
         "type": "query"
       },
@@ -3647,11 +3650,11 @@
         "name": "instance_type",
         "options": [],
         "query": {
-          "query": "label_values(node_uname_info{`@resource.k8s.cluster.name`=\"$cluster\"}, @resource.k8s.node.label.node.kubernetes.io/instance-type)",
+          "query": "query_result(count by (`@resource.k8s.node.label.node.kubernetes.io/instance-type`) (node_uname_info{`@resource.k8s.cluster.name`=\"$cluster\"}))",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
-        "regex": "",
+        "regex": "/.*=\"(.+)\".*/",
         "sort": 1,
         "type": "query"
       }

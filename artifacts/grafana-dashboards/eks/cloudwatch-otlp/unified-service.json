@@ -2961,7 +2961,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "max(\n    max(rds_instance_vcpu_average{}) by (instance_class)\n    * on (instance_class)\n    group_left(aws_account_id,aws_region,dbidentifier)\n    max(rds_instance_info{dbidentifier=\"eks-petclinic-pythoninstance1\"}) by (aws_account_id, aws_region, dbidentifier, instance_class)\n)\n",
+          "expr": "max(\n    max(rds_instance_vcpu_average) by (instance_class)\n    * on (instance_class)\n    group_left(aws_account_id,aws_region,dbidentifier)\n    max(rds_instance_info{dbidentifier=\"eks-petclinic-pythoninstance1\"}) by (aws_account_id, aws_region, dbidentifier, instance_class)\n)\n",
           "instant": false,
           "legendFormat": "Number of vCPU",
           "range": true,
@@ -3530,13 +3530,14 @@
         "name": "account_id",
         "options": [],
         "query": {
-          "qryType": 1,
-          "query": "label_values(container_cpu_usage_seconds_total, `@aws.account`)",
+          "qryType": 3,
+          "query": "query_result(count by (`@aws.account`) (container_cpu_usage_seconds_total))",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,
         "sort": 1,
-        "type": "query"
+        "type": "query",
+        "regex": "/.*=\"(.+)\".*/"
       },
       {
         "allowCustomValue": false,
@@ -3551,13 +3552,14 @@
         "name": "region",
         "options": [],
         "query": {
-          "qryType": 1,
-          "query": "label_values(container_cpu_usage_seconds_total, `@aws.region`)",
+          "qryType": 3,
+          "query": "query_result(count by (`@aws.region`) (container_cpu_usage_seconds_total))",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,
         "sort": 1,
-        "type": "query"
+        "type": "query",
+        "regex": "/.*=\"(.+)\".*/"
       },
       {
         "current": {},
@@ -3569,13 +3571,14 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "qryType": 1,
-          "query": "label_values(container_cpu_usage_seconds_total, `@resource.k8s.cluster.name`)",
+          "qryType": 3,
+          "query": "query_result(count by (`@resource.k8s.cluster.name`) (container_cpu_usage_seconds_total))",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,
         "sort": 1,
-        "type": "query"
+        "type": "query",
+        "regex": "/.*=\"(.+)\".*/"
       },
       {
         "current": {},
@@ -3585,10 +3588,11 @@
         },
         "name": "workload",
         "options": [],
-        "query": "label_values({\"container_cpu_usage_seconds_total\"}, `@resource.k8s.workload.name`)",
+        "query": "query_result(count by (`@resource.k8s.workload.name`) ({\"container_cpu_usage_seconds_total\"}))",
         "refresh": 2,
         "sort": 1,
-        "type": "query"
+        "type": "query",
+        "regex": "/.*=\"(.+)\".*/"
       },
       {
         "allValue": ".*",
@@ -3600,10 +3604,11 @@
         "includeAll": true,
         "name": "pod",
         "options": [],
-        "query": "label_values({\"container_cpu_usage_seconds_total\", `@resource.k8s.workload.name`=\"$workload\"}, `@resource.k8s.pod.name`)",
+        "query": "query_result(count by (`@resource.k8s.pod.name`) ({\"container_cpu_usage_seconds_total\", `@resource.k8s.workload.name`=\"$workload\"}))",
         "refresh": 2,
         "sort": 1,
-        "type": "query"
+        "type": "query",
+        "regex": "/.*=\"(.+)\".*/"
       }
     ]
   },
