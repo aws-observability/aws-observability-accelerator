@@ -226,32 +226,6 @@
           "legendFormat": "{{workload}} - {{workload_type}}",
           "refId": "A",
           "step": 10
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "exemplar": false,
-          "expr": "scalar(kube_resourcequota{namespace=\"$namespace\", type=\"hard\",resource=\"requests.cpu\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "quota - requests",
-          "refId": "B",
-          "step": 10
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "exemplar": false,
-          "expr": "scalar(kube_resourcequota{namespace=\"$namespace\", type=\"hard\",resource=\"limits.cpu\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "quota - limits",
-          "refId": "C",
-          "step": 10
         }
       ],
       "title": "CPU Usage",
@@ -836,32 +810,6 @@
           "intervalFactor": 2,
           "legendFormat": "{{workload}} - {{workload_type}}",
           "refId": "A",
-          "step": 10
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "exemplar": false,
-          "expr": "scalar(kube_resourcequota{namespace=\"$namespace\", type=\"hard\",resource=\"requests.memory\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "quota - requests",
-          "refId": "B",
-          "step": 10
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "exemplar": false,
-          "expr": "scalar(kube_resourcequota{namespace=\"$namespace\", type=\"hard\",resource=\"limits.memory\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "quota - limits",
-          "refId": "C",
           "step": 10
         }
       ],
