@@ -1963,17 +1963,13 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(DCGM_FI_DEV_GPU_UTIL, `@resource.k8s.cluster.name`)",
+        "definition": "query_result(count by (`@resource.k8s.cluster.name`) (DCGM_FI_DEV_GPU_UTIL))",
         "hide": 0,
         "includeAll": false,
         "multi": false,
         "name": "cluster",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@resource.k8s.cluster.name`) (DCGM_FI_DEV_GPU_UTIL))",
-          "refId": "cluster",
-          "qryType": 3
-        },
+        "query": "query_result(count by (`@resource.k8s.cluster.name`) (DCGM_FI_DEV_GPU_UTIL))",
         "refresh": 1,
         "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,

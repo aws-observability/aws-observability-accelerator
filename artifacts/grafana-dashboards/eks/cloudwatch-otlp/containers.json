@@ -2391,15 +2391,11 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(container_cpu_usage_seconds_total, `@resource.k8s.cluster.name`)",
+        "definition": "query_result(count by (`@resource.k8s.cluster.name`) (container_cpu_usage_seconds_total))",
         "includeAll": false,
         "name": "cluster",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@resource.k8s.cluster.name`) (container_cpu_usage_seconds_total))",
-          "refId": "StandardVariableQuery",
-          "qryType": 3
-        },
+        "query": "query_result(count by (`@resource.k8s.cluster.name`) (container_cpu_usage_seconds_total))",
         "refresh": 2,
         "regex": "/.*=\"(.+)\".*/",
         "sort": 1,
@@ -2412,17 +2408,13 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\"}, `@resource.k8s.namespace.name`)",
+        "definition": "query_result(count by (`@resource.k8s.namespace.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\"}))",
         "includeAll": true,
         "label": "Namespace",
         "multi": true,
         "name": "namespace",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@resource.k8s.namespace.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\"}))",
-          "refId": "StandardVariableQuery",
-          "qryType": 3
-        },
+        "query": "query_result(count by (`@resource.k8s.namespace.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\"}))",
         "refresh": 2,
         "regex": "/.*=\"(.+)\".*/",
         "sort": 1,
@@ -2435,17 +2427,13 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"}, `@resource.k8s.node.name`)",
+        "definition": "query_result(count by (`@resource.k8s.node.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"}))",
         "includeAll": true,
         "label": "Node",
         "multi": true,
         "name": "node",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@resource.k8s.node.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"}))",
-          "refId": "StandardVariableQuery",
-          "qryType": 3
-        },
+        "query": "query_result(count by (`@resource.k8s.node.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"}))",
         "refresh": 2,
         "regex": "/.*=\"(.+)\".*/",
         "sort": 1,
@@ -2458,17 +2446,13 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"}, `@resource.k8s.workload.name`)",
+        "definition": "query_result(count by (`@resource.k8s.workload.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"}))",
         "includeAll": true,
         "label": "Workload",
         "multi": true,
         "name": "workload",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@resource.k8s.workload.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"}))",
-          "refId": "StandardVariableQuery",
-          "qryType": 3
-        },
+        "query": "query_result(count by (`@resource.k8s.workload.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"}))",
         "refresh": 2,
         "regex": "/.*=\"(.+)\".*/",
         "sort": 1,
@@ -2481,17 +2465,13 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.workload.name`=~\"$workload\"}, `@resource.k8s.pod.name`)",
+        "definition": "query_result(count by (`@resource.k8s.pod.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.workload.name`=~\"$workload\"}))",
         "includeAll": true,
         "label": "Pod",
         "multi": true,
         "name": "pod",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@resource.k8s.pod.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.workload.name`=~\"$workload\"}))",
-          "refId": "StandardVariableQuery",
-          "qryType": 3
-        },
+        "query": "query_result(count by (`@resource.k8s.pod.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.workload.name`=~\"$workload\"}))",
         "refresh": 2,
         "regex": "/.*=\"(.+)\".*/",
         "sort": 1,
@@ -2504,17 +2484,13 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\"}, `@resource.k8s.container.name`)",
+        "definition": "query_result(count by (`@resource.k8s.container.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\"}))",
         "includeAll": true,
         "label": "Container",
         "multi": true,
         "name": "container",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@resource.k8s.container.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\"}))",
-          "refId": "StandardVariableQuery",
-          "qryType": 3
-        },
+        "query": "query_result(count by (`@resource.k8s.container.name`) (container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\"}))",
         "refresh": 2,
         "regex": "/.*=\"(.+)\".*/",
         "sort": 1,

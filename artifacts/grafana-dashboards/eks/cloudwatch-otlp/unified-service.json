@@ -3524,16 +3524,12 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(container_cpu_usage_seconds_total, `@aws.account`)",
+        "definition": "query_result(count by (`@aws.account`) (container_cpu_usage_seconds_total))",
         "includeAll": true,
         "multi": true,
         "name": "account_id",
         "options": [],
-        "query": {
-          "qryType": 3,
-          "query": "query_result(count by (`@aws.account`) (container_cpu_usage_seconds_total))",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
+        "query": "query_result(count by (`@aws.account`) (container_cpu_usage_seconds_total))",
         "refresh": 2,
         "sort": 1,
         "type": "query",
@@ -3546,16 +3542,12 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(container_cpu_usage_seconds_total, `@aws.region`)",
+        "definition": "query_result(count by (`@aws.region`) (container_cpu_usage_seconds_total))",
         "includeAll": true,
         "multi": true,
         "name": "region",
         "options": [],
-        "query": {
-          "qryType": 3,
-          "query": "query_result(count by (`@aws.region`) (container_cpu_usage_seconds_total))",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
+        "query": "query_result(count by (`@aws.region`) (container_cpu_usage_seconds_total))",
         "refresh": 2,
         "sort": 1,
         "type": "query",
@@ -3567,14 +3559,10 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(container_cpu_usage_seconds_total, `@resource.k8s.cluster.name`)",
+        "definition": "query_result(count by (`@resource.k8s.cluster.name`) (container_cpu_usage_seconds_total))",
         "name": "cluster",
         "options": [],
-        "query": {
-          "qryType": 3,
-          "query": "query_result(count by (`@resource.k8s.cluster.name`) (container_cpu_usage_seconds_total))",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
+        "query": "query_result(count by (`@resource.k8s.cluster.name`) (container_cpu_usage_seconds_total))",
         "refresh": 2,
         "sort": 1,
         "type": "query",
@@ -3592,7 +3580,8 @@
         "refresh": 2,
         "sort": 1,
         "type": "query",
-        "regex": "/.*=\"(.+)\".*/"
+        "regex": "/.*=\"(.+)\".*/",
+        "definition": "query_result(count by (`@resource.k8s.workload.name`) ({\"container_cpu_usage_seconds_total\"}))"
       },
       {
         "allValue": ".*",
@@ -3608,7 +3597,8 @@
         "refresh": 2,
         "sort": 1,
         "type": "query",
-        "regex": "/.*=\"(.+)\".*/"
+        "regex": "/.*=\"(.+)\".*/",
+        "definition": "query_result(count by (`@resource.k8s.pod.name`) ({\"container_cpu_usage_seconds_total\", `@resource.k8s.workload.name`=\"$workload\"}))"
       }
     ]
   },

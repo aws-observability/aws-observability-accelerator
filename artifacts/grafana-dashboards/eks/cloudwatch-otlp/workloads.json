@@ -2138,16 +2138,13 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
-        "definition": "",
+        "definition": "query_result(count by (`@resource.k8s.cluster.name`) (kube_node_info))",
         "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "cluster",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@resource.k8s.cluster.name`) (kube_node_info))",
-          "refId": "Prometheus-cluster-Variable-Query"
-        },
+        "query": "query_result(count by (`@resource.k8s.cluster.name`) (kube_node_info))",
         "refresh": 2,
         "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,
@@ -2164,16 +2161,13 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
-        "definition": "",
+        "definition": "query_result(count by (`@aws.account`) (kube_node_info))",
         "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "aws_account",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@aws.account`) (kube_node_info))",
-          "refId": "Prometheus-account-Variable-Query"
-        },
+        "query": "query_result(count by (`@aws.account`) (kube_node_info))",
         "refresh": 2,
         "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,
@@ -2190,16 +2184,13 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
-        "definition": "",
+        "definition": "query_result(count by (`@resource.k8s.namespace.name`) (kube_namespace_status_phase))",
         "hide": 0,
         "includeAll": false,
         "multi": false,
         "name": "namespace",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@resource.k8s.namespace.name`) (kube_namespace_status_phase))",
-          "refId": "Prometheus-namespace-Variable-Query"
-        },
+        "query": "query_result(count by (`@resource.k8s.namespace.name`) (kube_namespace_status_phase))",
         "refresh": 2,
         "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,
@@ -2214,16 +2205,13 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
-        "definition": "",
+        "definition": "query_result(count by (`@resource.k8s.workload.type`) (kube_pod_owner{`@resource.k8s.namespace.name`=\"$namespace\", `@resource.k8s.workload.name`=~\".+\"}))",
         "hide": 0,
         "includeAll": false,
         "multi": false,
         "name": "type",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@resource.k8s.workload.type`) (kube_pod_owner{`@resource.k8s.namespace.name`=\"$namespace\", `@resource.k8s.workload.name`=~\".+\"}))",
-          "refId": "Prometheus-type-Variable-Query"
-        },
+        "query": "query_result(count by (`@resource.k8s.workload.type`) (kube_pod_owner{`@resource.k8s.namespace.name`=\"$namespace\", `@resource.k8s.workload.name`=~\".+\"}))",
         "refresh": 2,
         "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,
@@ -2238,16 +2226,13 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
-        "definition": "",
+        "definition": "query_result(count by (`@resource.k8s.workload.name`) (kube_pod_owner{`@resource.k8s.namespace.name`=\"$namespace\", `@resource.k8s.workload.type`=\"$type\"}))",
         "hide": 0,
         "includeAll": false,
         "multi": false,
         "name": "workload",
         "options": [],
-        "query": {
-          "query": "query_result(count by (`@resource.k8s.workload.name`) (kube_pod_owner{`@resource.k8s.namespace.name`=\"$namespace\", `@resource.k8s.workload.type`=\"$type\"}))",
-          "refId": "Prometheus-workload-Variable-Query"
-        },
+        "query": "query_result(count by (`@resource.k8s.workload.name`) (kube_pod_owner{`@resource.k8s.namespace.name`=\"$namespace\", `@resource.k8s.workload.type`=\"$type\"}))",
         "refresh": 2,
         "regex": "/.*=\"(.+)\".*/",
         "skipUrlSync": false,
