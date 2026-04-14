@@ -95,7 +95,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "count(kube_pod_status_phase{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", phase=\"Running\"} == 1)",
+          "expr": "count(kube_pod_status_phase{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", phase=\"Running\"} == 1)",
           "legendFormat": "Running Pods",
           "range": true,
           "refId": "A"
@@ -168,7 +168,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(increase(kube_pod_container_status_restarts_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\"}[1h]))",
+          "expr": "sum(increase(kube_pod_container_status_restarts_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\"}[1h]))",
           "legendFormat": "Restarts (1h)",
           "range": true,
           "refId": "A"
@@ -267,7 +267,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "kube_deployment_status_replicas_ready{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\"} / kube_deployment_status_replicas{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\"}",
+          "expr": "kube_deployment_status_replicas_ready{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"} / kube_deployment_status_replicas{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"}",
           "format": "table",
           "instant": true,
           "legendFormat": "",
@@ -357,7 +357,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "min({\"k8s.pod.uptime\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\"})",
+          "expr": "min({\"k8s.pod.uptime\", `@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\"})",
           "legendFormat": "Min Pod Uptime",
           "range": true,
           "refId": "A"
@@ -456,7 +456,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "increase(kube_pod_container_status_restarts_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\"}[5m]) > 0",
+          "expr": "increase(kube_pod_container_status_restarts_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\"}[5m]) > 0",
           "legendFormat": "{{@resource.k8s.pod.name}}/{{container}}",
           "range": true,
           "refId": "A"
@@ -568,7 +568,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", \"@resource.k8s.container.name\"=~\"$container\", \"@resource.k8s.node.name\"=~\"$node\", \"@resource.k8s.workload.name\"=~\"$workload\"}[5m])) by (@resource.k8s.pod.name, @resource.k8s.container.name)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by (@resource.k8s.pod.name, @resource.k8s.container.name)",
           "legendFormat": "{{@resource.k8s.pod.name}} / {{@resource.k8s.container.name}}",
           "range": true,
           "refId": "A"
@@ -672,7 +672,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "{\"k8s.container.cpu_limit_utilization\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", \"@resource.k8s.container.name\"=~\"$container\", \"@resource.k8s.node.name\"=~\"$node\"}",
+          "expr": "{\"k8s.container.cpu_limit_utilization\", `@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\"}",
           "legendFormat": "{{@resource.k8s.pod.name}} / {{@resource.k8s.container.name}}",
           "range": true,
           "refId": "A"
@@ -771,7 +771,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "{\"k8s.pod.cpu_request_utilization\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", \"@resource.k8s.node.name\"=~\"$node\"}",
+          "expr": "{\"k8s.pod.cpu_request_utilization\", `@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.node.name`=~\"$node\"}",
           "legendFormat": "{{@resource.k8s.pod.name}}",
           "range": true,
           "refId": "A"
@@ -888,7 +888,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "kube_pod_container_resource_requests{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", resource=\"cpu\"}",
+          "expr": "kube_pod_container_resource_requests{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", resource=\"cpu\"}",
           "legendFormat": "{{@resource.k8s.pod.name}}/{{container}} request",
           "range": true,
           "refId": "A"
@@ -898,7 +898,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "kube_pod_container_resource_limits{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", resource=\"cpu\"}",
+          "expr": "kube_pod_container_resource_limits{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", resource=\"cpu\"}",
           "legendFormat": "{{@resource.k8s.pod.name}}/{{container}} limit",
           "range": true,
           "refId": "B"
@@ -1010,7 +1010,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "container_memory_working_set_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", \"@resource.k8s.container.name\"=~\"$container\", \"@resource.k8s.node.name\"=~\"$node\", \"@resource.k8s.workload.name\"=~\"$workload\"}",
+          "expr": "container_memory_working_set_bytes{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}",
           "legendFormat": "{{@resource.k8s.pod.name}} / {{@resource.k8s.container.name}}",
           "range": true,
           "refId": "A"
@@ -1114,7 +1114,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "{\"k8s.container.memory_limit_utilization\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", \"@resource.k8s.container.name\"=~\"$container\", \"@resource.k8s.node.name\"=~\"$node\"}",
+          "expr": "{\"k8s.container.memory_limit_utilization\", `@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\"}",
           "legendFormat": "{{@resource.k8s.pod.name}} / {{@resource.k8s.container.name}}",
           "range": true,
           "refId": "A"
@@ -1213,7 +1213,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "container_memory_usage_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", \"@resource.k8s.container.name\"=~\"$container\", \"@resource.k8s.node.name\"=~\"$node\", \"@resource.k8s.workload.name\"=~\"$workload\"}",
+          "expr": "container_memory_usage_bytes{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}",
           "legendFormat": "{{@resource.k8s.pod.name}} / {{@resource.k8s.container.name}}",
           "range": true,
           "refId": "A"
@@ -1330,7 +1330,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "kube_pod_container_resource_requests{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", resource=\"memory\"}",
+          "expr": "kube_pod_container_resource_requests{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", resource=\"memory\"}",
           "legendFormat": "{{@resource.k8s.pod.name}}/{{container}} request",
           "range": true,
           "refId": "A"
@@ -1340,7 +1340,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "kube_pod_container_resource_limits{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", resource=\"memory\"}",
+          "expr": "kube_pod_container_resource_limits{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", resource=\"memory\"}",
           "legendFormat": "{{@resource.k8s.pod.name}}/{{container}} limit",
           "range": true,
           "refId": "B"
@@ -1452,7 +1452,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_network_receive_bytes_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", \"@resource.k8s.node.name\"=~\"$node\", \"@resource.k8s.workload.name\"=~\"$workload\"}[5m])) by (@resource.k8s.pod.name)",
+          "expr": "sum(rate(container_network_receive_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by (@resource.k8s.pod.name)",
           "legendFormat": "{{@resource.k8s.pod.name}}",
           "range": true,
           "refId": "A"
@@ -1551,7 +1551,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_network_transmit_bytes_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", \"@resource.k8s.node.name\"=~\"$node\", \"@resource.k8s.workload.name\"=~\"$workload\"}[5m])) by (@resource.k8s.pod.name)",
+          "expr": "sum(rate(container_network_transmit_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by (@resource.k8s.pod.name)",
           "legendFormat": "{{@resource.k8s.pod.name}}",
           "range": true,
           "refId": "A"
@@ -1663,7 +1663,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_fs_reads_bytes_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", \"@resource.k8s.container.name\"=~\"$container\", \"@resource.k8s.node.name\"=~\"$node\", \"@resource.k8s.workload.name\"=~\"$workload\"}[5m])) by (@resource.k8s.pod.name, @resource.k8s.container.name)",
+          "expr": "sum(rate(container_fs_reads_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by (@resource.k8s.pod.name, @resource.k8s.container.name)",
           "legendFormat": "{{@resource.k8s.pod.name}} / {{@resource.k8s.container.name}}",
           "range": true,
           "refId": "A"
@@ -1762,7 +1762,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_fs_writes_bytes_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\", \"@resource.k8s.container.name\"=~\"$container\", \"@resource.k8s.node.name\"=~\"$node\", \"@resource.k8s.workload.name\"=~\"$workload\"}[5m])) by (@resource.k8s.pod.name, @resource.k8s.container.name)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by (@resource.k8s.pod.name, @resource.k8s.container.name)",
           "legendFormat": "{{@resource.k8s.pod.name}} / {{@resource.k8s.container.name}}",
           "range": true,
           "refId": "A"
@@ -1949,7 +1949,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_status_phase{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\"} == 1) by (phase)",
+          "expr": "sum(kube_pod_status_phase{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"} == 1) by (phase)",
           "legendFormat": "{{phase}}",
           "range": true,
           "refId": "A"
@@ -2052,7 +2052,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "rate(kube_pod_container_status_restarts_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.pod.name\"=~\"$pod\"}[5m]) * 60",
+          "expr": "rate(kube_pod_container_status_restarts_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\"}[5m]) * 60",
           "legendFormat": "{{@resource.k8s.pod.name}} / {{container}}",
           "range": true,
           "refId": "A"
@@ -2169,7 +2169,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "kube_deployment_status_replicas{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.workload.name\"=~\"$workload\"}",
+          "expr": "kube_deployment_status_replicas{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.workload.name`=~\"$workload\"}",
           "legendFormat": "{{deployment}} desired",
           "range": true,
           "refId": "A"
@@ -2179,7 +2179,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "kube_deployment_status_replicas_ready{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.workload.name\"=~\"$workload\"}",
+          "expr": "kube_deployment_status_replicas_ready{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.workload.name`=~\"$workload\"}",
           "legendFormat": "{{deployment}} ready",
           "range": true,
           "refId": "B"
@@ -2189,7 +2189,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "kube_deployment_status_replicas_available{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\", \"@resource.k8s.workload.name\"=~\"$workload\"}",
+          "expr": "kube_deployment_status_replicas_available{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.workload.name`=~\"$workload\"}",
           "legendFormat": "{{deployment}} available",
           "range": true,
           "refId": "C"
@@ -2333,7 +2333,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_status_running{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\"} == 1)",
+          "expr": "sum(kube_pod_container_status_running{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"} == 1)",
           "legendFormat": "running",
           "range": true,
           "refId": "A"
@@ -2343,7 +2343,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_status_waiting{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\"} == 1)",
+          "expr": "sum(kube_pod_container_status_waiting{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"} == 1)",
           "legendFormat": "waiting",
           "range": true,
           "refId": "B"
@@ -2353,7 +2353,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_status_terminated{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.namespace.name\"=~\"$namespace\"} == 1)",
+          "expr": "sum(kube_pod_container_status_terminated{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\"} == 1)",
           "legendFormat": "terminated",
           "range": true,
           "refId": "C"
