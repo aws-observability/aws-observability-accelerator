@@ -2581,7 +2581,7 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
-        "definition": "label_values(kube_pod_owner{@resource.k8s.namespace.name=\"$namespace\", @resource.k8s.workload.name=~\".+\"},@resource.k8s.workload.type)",
+        "definition": "label_values(kube_pod_owner,@resource.k8s.workload.type)",
         "hide": 0,
         "includeAll": false,
         "multi": false,
@@ -2589,7 +2589,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(kube_pod_owner{@resource.k8s.namespace.name=\"$namespace\", @resource.k8s.workload.name=~\".+\"},@resource.k8s.workload.type)",
+          "query": "label_values(kube_pod_owner,@resource.k8s.workload.type)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,
