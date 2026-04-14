@@ -568,7 +568,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by (@resource.k8s.pod.name, @resource.k8s.container.name)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by(`@resource.k8s.pod.name`, `@resource.k8s.container.name`)",
           "legendFormat": "{{@resource.k8s.pod.name}} / {{@resource.k8s.container.name}}",
           "range": true,
           "refId": "A"
@@ -1452,7 +1452,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_network_receive_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by (@resource.k8s.pod.name)",
+          "expr": "sum(rate(container_network_receive_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by(`@resource.k8s.pod.name`)",
           "legendFormat": "{{@resource.k8s.pod.name}}",
           "range": true,
           "refId": "A"
@@ -1551,7 +1551,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_network_transmit_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by (@resource.k8s.pod.name)",
+          "expr": "sum(rate(container_network_transmit_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by(`@resource.k8s.pod.name`)",
           "legendFormat": "{{@resource.k8s.pod.name}}",
           "range": true,
           "refId": "A"
@@ -1663,7 +1663,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_fs_reads_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by (@resource.k8s.pod.name, @resource.k8s.container.name)",
+          "expr": "sum(rate(container_fs_reads_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by(`@resource.k8s.pod.name`, `@resource.k8s.container.name`)",
           "legendFormat": "{{@resource.k8s.pod.name}} / {{@resource.k8s.container.name}}",
           "range": true,
           "refId": "A"
@@ -1762,7 +1762,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_fs_writes_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by (@resource.k8s.pod.name, @resource.k8s.container.name)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{`@resource.k8s.cluster.name`=\"$cluster\", `@resource.k8s.namespace.name`=~\"$namespace\", `@resource.k8s.pod.name`=~\"$pod\", `@resource.k8s.container.name`=~\"$container\", `@resource.k8s.node.name`=~\"$node\", `@resource.k8s.workload.name`=~\"$workload\"}[5m])) by(`@resource.k8s.pod.name`, `@resource.k8s.container.name`)",
           "legendFormat": "{{@resource.k8s.pod.name}} / {{@resource.k8s.container.name}}",
           "range": true,
           "refId": "A"

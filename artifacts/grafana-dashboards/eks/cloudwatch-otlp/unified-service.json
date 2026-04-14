@@ -1187,7 +1187,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(rate({\"container_cpu_usage_seconds_total\", `@resource.k8s.workload.name`=\"$workload\", `@resource.k8s.pod.name`=~\"$pod\"}[5m])) by (@resource.k8s.pod.name, @resource.host.id)",
+          "expr": "sum(rate({\"container_cpu_usage_seconds_total\", `@resource.k8s.workload.name`=\"$workload\", `@resource.k8s.pod.name`=~\"$pod\"}[5m])) by(`@resource.k8s.pod.name`, `@resource.host.id`)",
           "legendFormat": "{{@resource.k8s.pod.name}} ({{@resource.host.id}})",
           "range": true,
           "refId": "A"
@@ -1292,7 +1292,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum({\"container_memory_working_set_bytes\", `@resource.k8s.workload.name`=\"$workload\", `@resource.k8s.pod.name`=~\"$pod\"}) by (@resource.k8s.pod.name, @resource.host.id)",
+          "expr": "sum({\"container_memory_working_set_bytes\", `@resource.k8s.workload.name`=\"$workload\", `@resource.k8s.pod.name`=~\"$pod\"}) by(`@resource.k8s.pod.name`, `@resource.host.id`)",
           "legendFormat": "{{@resource.k8s.pod.name}} ({{@resource.host.id}})",
           "refId": "A"
         }
@@ -1396,7 +1396,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(rate({\"container_network_receive_bytes_total\", `@resource.k8s.workload.name`=\"$workload\", `@resource.k8s.pod.name`=~\"$pod\"}[5m])) by (@resource.k8s.pod.name, @resource.host.id)",
+          "expr": "sum(rate({\"container_network_receive_bytes_total\", `@resource.k8s.workload.name`=\"$workload\", `@resource.k8s.pod.name`=~\"$pod\"}[5m])) by(`@resource.k8s.pod.name`, `@resource.host.id`)",
           "legendFormat": "rx {{@resource.k8s.pod.name}} ({{@resource.host.id}})",
           "refId": "A"
         },
@@ -1405,7 +1405,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(rate({\"container_network_transmit_bytes_total\", `@resource.k8s.workload.name`=\"$workload\", `@resource.k8s.pod.name`=~\"$pod\"}[5m])) by (@resource.k8s.pod.name, @resource.host.id)",
+          "expr": "sum(rate({\"container_network_transmit_bytes_total\", `@resource.k8s.workload.name`=\"$workload\", `@resource.k8s.pod.name`=~\"$pod\"}[5m])) by(`@resource.k8s.pod.name`, `@resource.host.id`)",
           "legendFormat": "tx {{@resource.k8s.pod.name}} ({{@resource.host.id}})",
           "refId": "B"
         }

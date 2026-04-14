@@ -67,7 +67,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "count(avg by (@resource.host.id, @resource.hw.id) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\"}))",
+          "expr": "count(avg by(`@resource.host.id`, `@resource.hw.id`) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\"}))",
           "instant": true,
           "refId": "A",
           "datasource": {
@@ -130,7 +130,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "count(avg by (@resource.host.id) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\"}))",
+          "expr": "count(avg by(`@resource.host.id`) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\"}))",
           "instant": true,
           "refId": "A",
           "datasource": {
@@ -259,7 +259,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "count(avg by (@resource.k8s.pod.name) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
+          "expr": "count(avg by(`@resource.k8s.pod.name`) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
           "instant": true,
           "refId": "A",
           "datasource": {
@@ -367,7 +367,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "count(avg by (@resource.host.id, @resource.hw.id) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
+          "expr": "count(avg by(`@resource.host.id`, `@resource.hw.id`) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
           "instant": true,
           "legendFormat": "Assigned",
           "refId": "A",
@@ -377,7 +377,7 @@
           }
         },
         {
-          "expr": "count(avg by (@resource.host.id, @resource.hw.id) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`=\"\"}))",
+          "expr": "count(avg by(`@resource.host.id`, `@resource.hw.id`) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`=\"\"}))",
           "instant": true,
           "legendFormat": "Unassigned",
           "refId": "B",
@@ -497,7 +497,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "count by (@resource.host.id) (avg by (@resource.host.id, @resource.hw.id) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
+          "expr": "count by(`@resource.host.id`) (avg by(`@resource.host.id`, `@resource.hw.id`) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
           "legendFormat": "{{@resource.host.id}} Used",
           "refId": "A",
           "datasource": {
@@ -506,7 +506,7 @@
           }
         },
         {
-          "expr": "count by (@resource.host.id) (avg by (@resource.host.id, @resource.hw.id) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`=\"\"}))",
+          "expr": "count by(`@resource.host.id`) (avg by(`@resource.host.id`, `@resource.hw.id`) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`=\"\"}))",
           "legendFormat": "{{@resource.host.id}} Unused",
           "refId": "B",
           "datasource": {
@@ -623,7 +623,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "avg by (@resource.host.id, @resource.hw.id, @resource.hw.name, @resource.k8s.pod.name, @resource.k8s.pod.label.training-job`, @resource.k8s.pod.label.user-alias`) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\"})",
+          "expr": "avg by(`@resource.host.id`, `@resource.hw.id`, `@resource.hw.name`, `@resource.k8s.pod.name`, `@resource.k8s.pod.label.training-jo`b`, `@resource.k8s.pod.label.user-alia`s`) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\"})",
           "legendFormat": "{{@resource.host.id}} / {{@resource.hw.name}} [{{@resource.k8s.pod.label.training-job}}] {{@resource.k8s.pod.label.user-alias}}",
           "refId": "A",
           "datasource": {
@@ -834,7 +834,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "avg by (@resource.host.id, @resource.hw.id, @resource.hw.name, @resource.k8s.pod.name, @resource.k8s.container.name, @resource.k8s.pod.label.training-job`, @resource.k8s.pod.label.user-alias`) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\"})",
+          "expr": "avg by(`@resource.host.id`, `@resource.hw.id`, `@resource.hw.name`, `@resource.k8s.pod.name`, `@resource.k8s.container.name`, `@resource.k8s.pod.label.training-jo`b`, `@resource.k8s.pod.label.user-alia`s`) (DCGM_FI_DEV_GPU_UTIL{`@resource.k8s.cluster.name`=\"$cluster\"})",
           "format": "table",
           "instant": true,
           "refId": "A",
@@ -911,7 +911,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "count(avg by (@resource.host.id, @resource.hw.name) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\"}))",
+          "expr": "count(avg by(`@resource.host.id`, `@resource.hw.name`) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\"}))",
           "instant": true,
           "refId": "A",
           "datasource": {
@@ -974,7 +974,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "count(avg by (@resource.host.id, @resource.hw.id) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\"}))",
+          "expr": "count(avg by(`@resource.host.id`, `@resource.hw.id`) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\"}))",
           "instant": true,
           "refId": "A",
           "datasource": {
@@ -1103,7 +1103,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "count(avg by (@resource.k8s.pod.name) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
+          "expr": "count(avg by(`@resource.k8s.pod.name`) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
           "instant": true,
           "refId": "A",
           "datasource": {
@@ -1198,7 +1198,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "count(avg by (@resource.host.id, @resource.hw.id) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
+          "expr": "count(avg by(`@resource.host.id`, `@resource.hw.id`) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
           "instant": true,
           "legendFormat": "Assigned",
           "refId": "A",
@@ -1208,7 +1208,7 @@
           }
         },
         {
-          "expr": "count(avg by (@resource.host.id, @resource.hw.id) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`=\"\"}))",
+          "expr": "count(avg by(`@resource.host.id`, `@resource.hw.id`) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`=\"\"}))",
           "instant": true,
           "legendFormat": "Unassigned",
           "refId": "B",
@@ -1328,7 +1328,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "count by (@resource.host.id, @resource.hw.name) (avg by (@resource.host.id, @resource.hw.name, @resource.hw.id) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
+          "expr": "count by(`@resource.host.id`, `@resource.hw.name`) (avg by(`@resource.host.id`, `@resource.hw.name`, `@resource.hw.id`) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`!=\"\"}))",
           "legendFormat": "{{@resource.host.id}} / {{@resource.hw.name}} Used",
           "refId": "A",
           "datasource": {
@@ -1337,7 +1337,7 @@
           }
         },
         {
-          "expr": "count by (@resource.host.id, @resource.hw.name) (avg by (@resource.host.id, @resource.hw.name, @resource.hw.id) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`=\"\"}))",
+          "expr": "count by(`@resource.host.id`, `@resource.hw.name`) (avg by(`@resource.host.id`, `@resource.hw.name`, `@resource.hw.id`) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\", @resource.k8s.pod.label.user-alias`=\"\"}))",
           "legendFormat": "{{@resource.host.id}} / {{@resource.hw.name}} Unused",
           "refId": "B",
           "datasource": {
@@ -1438,7 +1438,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "avg by (@resource.host.id, @resource.k8s.pod.name, @resource.k8s.pod.label.training-job`, @resource.k8s.pod.label.user-alias`, @resource.hw.id, @resource.hw.name) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\"}) * 100",
+          "expr": "avg by(`@resource.host.id`, `@resource.k8s.pod.name`, `@resource.k8s.pod.label.training-jo`b`, `@resource.k8s.pod.label.user-alia`s`, `@resource.hw.id`, `@resource.hw.name`) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\"}) * 100",
           "legendFormat": "{{@resource.host.id}} / {{@resource.hw.name}} core-{{@resource.hw.id}} [{{@resource.k8s.pod.label.training-job}}] {{@resource.k8s.pod.label.user-alias}}",
           "refId": "A",
           "datasource": {
@@ -1653,7 +1653,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "avg by (@resource.host.id, @resource.hw.id, @resource.hw.name, @resource.k8s.pod.name, @resource.k8s.pod.label.training-job`, @resource.k8s.pod.label.user-alias`, @resource.k8s.container.name) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\"}) * 100",
+          "expr": "avg by(`@resource.host.id`, `@resource.hw.id`, `@resource.hw.name`, `@resource.k8s.pod.name`, `@resource.k8s.pod.label.training-jo`b`, `@resource.k8s.pod.label.user-alia`s`, `@resource.k8s.container.name`) (neuroncore_utilization_ratio{`@resource.k8s.cluster.name`=\"$cluster\"}) * 100",
           "format": "table",
           "instant": true,
           "refId": "A",
@@ -1912,7 +1912,7 @@
       "pluginVersion": "12.3.0-pre",
       "targets": [
         {
-          "expr": "avg by (@resource.host.id, @resource.aws.efa.eni.id, @resource.k8s.pod.name) (rate(efa_rdma_read_bytes{`@resource.k8s.cluster.name`=\"$cluster\"}[5m]))",
+          "expr": "avg by(`@resource.host.id`, `@resource.aws.efa.eni.id`, `@resource.k8s.pod.name`) (rate(efa_rdma_read_bytes{`@resource.k8s.cluster.name`=\"$cluster\"}[5m]))",
           "format": "table",
           "instant": true,
           "refId": "A",
