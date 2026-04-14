@@ -937,7 +937,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "count(avg((max(kube_pod_owner{@resource.k8s.workload.type=~\"ReplicaSet|StatefulSet|DaemonSet|Job\"}) by (@resource.k8s.namespace.name, @resource.k8s.workload.name, @resource.k8s.pod.name, @resource.k8s.workload.type))) by (@resource.k8s.workload.name, @resource.k8s.namespace.name)) by (@resource.k8s.namespace.name)",
+          "expr": "count(avg((max(kube_pod_owner{\"@resource.k8s.workload.type\"=~\"ReplicaSet|StatefulSet|DaemonSet|Job\"}) by (@resource.k8s.namespace.name, @resource.k8s.workload.name, @resource.k8s.pod.name, @resource.k8s.workload.type))) by (@resource.k8s.workload.name, @resource.k8s.namespace.name)) by (@resource.k8s.namespace.name)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1479,7 +1479,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "count(avg((max(kube_pod_owner{@resource.k8s.workload.type=~\"ReplicaSet|StatefulSet|DaemonSet|Job\"}) by (@resource.k8s.namespace.name, @resource.k8s.workload.name, @resource.k8s.pod.name, @resource.k8s.workload.type))) by (@resource.k8s.workload.name, @resource.k8s.namespace.name)) by (@resource.k8s.namespace.name)",
+          "expr": "count(avg((max(kube_pod_owner{\"@resource.k8s.workload.type\"=~\"ReplicaSet|StatefulSet|DaemonSet|Job\"}) by (@resource.k8s.namespace.name, @resource.k8s.workload.name, @resource.k8s.pod.name, @resource.k8s.workload.type))) by (@resource.k8s.workload.name, @resource.k8s.namespace.name)) by (@resource.k8s.namespace.name)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1848,7 +1848,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", @resource.k8s.namespace.name=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
+          "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", \"@resource.k8s.namespace.name\"=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1863,7 +1863,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_bytes_total{job=\"kubelet\", @resource.k8s.namespace.name=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
+          "expr": "sum(irate(container_network_transmit_bytes_total{job=\"kubelet\", \"@resource.k8s.namespace.name\"=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1878,7 +1878,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_packets_total{job=\"kubelet\", @resource.k8s.namespace.name=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
+          "expr": "sum(irate(container_network_receive_packets_total{job=\"kubelet\", \"@resource.k8s.namespace.name\"=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1893,7 +1893,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_packets_total{job=\"kubelet\", @resource.k8s.namespace.name=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
+          "expr": "sum(irate(container_network_transmit_packets_total{job=\"kubelet\", \"@resource.k8s.namespace.name\"=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1908,7 +1908,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_packets_dropped_total{job=\"kubelet\", @resource.k8s.namespace.name=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
+          "expr": "sum(irate(container_network_receive_packets_dropped_total{job=\"kubelet\", \"@resource.k8s.namespace.name\"=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1923,7 +1923,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_packets_dropped_total{job=\"kubelet\", @resource.k8s.namespace.name=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
+          "expr": "sum(irate(container_network_transmit_packets_dropped_total{job=\"kubelet\", \"@resource.k8s.namespace.name\"=~\".+\"}[$__interval])) by (@resource.k8s.namespace.name)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2057,7 +2057,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", @resource.k8s.namespace.name=~\".+\"}[$__rate_interval])) by (@resource.k8s.namespace.name)",
+          "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", \"@resource.k8s.namespace.name\"=~\".+\"}[$__rate_interval])) by (@resource.k8s.namespace.name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2156,7 +2156,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_bytes_total{job=\"kubelet\", @resource.k8s.namespace.name=~\".+\"}[$__rate_interval])) by (@resource.k8s.namespace.name)",
+          "expr": "sum(irate(container_network_transmit_bytes_total{job=\"kubelet\", \"@resource.k8s.namespace.name\"=~\".+\"}[$__rate_interval])) by (@resource.k8s.namespace.name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2281,7 +2281,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(irate(container_network_receive_packets_dropped_total{job=\"kubelet\", @resource.k8s.namespace.name=~\".+\"}[$__rate_interval])) by (@resource.k8s.namespace.name)",
+          "expr": "sum(irate(container_network_receive_packets_dropped_total{job=\"kubelet\", \"@resource.k8s.namespace.name\"=~\".+\"}[$__rate_interval])) by (@resource.k8s.namespace.name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2380,7 +2380,7 @@
             "uid": "$datasource"
           },
           "exemplar": false,
-          "expr": "sum(irate(container_network_transmit_packets_dropped_total{job=\"kubelet\", @resource.k8s.namespace.name=~\".+\"}[$__rate_interval])) by (@resource.k8s.namespace.name)",
+          "expr": "sum(irate(container_network_transmit_packets_dropped_total{job=\"kubelet\", \"@resource.k8s.namespace.name\"=~\".+\"}[$__rate_interval])) by (@resource.k8s.namespace.name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3022,7 +3022,7 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
-        "definition": "label_values(kube_node_info,@resource.k8s.cluster.name)",
+        "definition": "label_values(kube_node_info, @resource.k8s.cluster.name)",
         "hide": 0,
         "includeAll": true,
         "multi": true,
@@ -3030,7 +3030,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(kube_node_info,@resource.k8s.cluster.name)",
+          "query": "label_values(kube_node_info, @resource.k8s.cluster.name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,
@@ -3049,7 +3049,7 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
-        "definition": "label_values(kube_node_info,@aws.account)",
+        "definition": "label_values(kube_node_info, @aws.account)",
         "hide": 0,
         "includeAll": true,
         "multi": true,
@@ -3057,7 +3057,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(kube_node_info,@aws.account)",
+          "query": "label_values(kube_node_info, @aws.account)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,

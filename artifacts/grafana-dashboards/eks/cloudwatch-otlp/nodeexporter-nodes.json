@@ -1269,7 +1269,7 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
-        "definition": "label_values(kube_node_info,@resource.k8s.cluster.name)",
+        "definition": "label_values(kube_node_info, @resource.k8s.cluster.name)",
         "hide": 0,
         "includeAll": true,
         "multi": true,
@@ -1277,7 +1277,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(kube_node_info,@resource.k8s.cluster.name)",
+          "query": "label_values(kube_node_info, @resource.k8s.cluster.name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,
@@ -1296,7 +1296,7 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
-        "definition": "label_values(kube_node_info,@aws.account)",
+        "definition": "label_values(kube_node_info, @aws.account)",
         "hide": 0,
         "includeAll": true,
         "multi": true,
@@ -1304,7 +1304,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(kube_node_info,@aws.account)",
+          "query": "label_values(kube_node_info, @aws.account)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,
@@ -1333,7 +1333,7 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(kube_node_info,@resource.k8s.node.name)",
+        "definition": "label_values(kube_node_info{\"@resource.k8s.cluster.name\"=\"$cluster\"}, @resource.k8s.node.name)",
         "hide": 0,
         "includeAll": true,
         "label": "Instance",
@@ -1342,7 +1342,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(kube_node_info,@resource.k8s.node.name)",
+          "query": "label_values(kube_node_info{\"@resource.k8s.cluster.name\"=\"$cluster\"}, @resource.k8s.node.name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,
