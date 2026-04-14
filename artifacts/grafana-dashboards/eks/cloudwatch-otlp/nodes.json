@@ -130,7 +130,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "1 - sum without (mode) (rate(node_cpu_seconds_total{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\", mode=~\"idle|iowait|steal\"}[5m]))",
+          "expr": "1 - sum without (mode) (rate(node_cpu_seconds_total{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\", mode=~\"idle|iowait|steal\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -235,7 +235,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_load1{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"})",
+          "expr": "sum(node_load1{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -250,7 +250,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_load5{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"})",
+          "expr": "sum(node_load5{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -265,7 +265,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_load15{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"})",
+          "expr": "sum(node_load15{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -383,7 +383,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "(\n  sum(node_memory_MemTotal_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"})\n-\n  sum(node_memory_MemFree_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"})\n-\n  sum(node_memory_Buffers_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"})\n-\n  sum(node_memory_Cached_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"})\n)\n",
+          "expr": "(\n  sum(node_memory_MemTotal_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"})\n-\n  sum(node_memory_MemFree_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"})\n-\n  sum(node_memory_Buffers_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"})\n-\n  sum(node_memory_Cached_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"})\n)\n",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -398,7 +398,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_memory_Buffers_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"})",
+          "expr": "sum(node_memory_Buffers_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -413,7 +413,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_memory_Cached_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"})",
+          "expr": "sum(node_memory_Cached_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -428,7 +428,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(node_memory_MemFree_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"})",
+          "expr": "sum(node_memory_MemFree_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -503,7 +503,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "100 -\n(\n  avg(node_memory_MemAvailable_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}) /\n  avg(node_memory_MemTotal_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"})\n* 100\n)\n",
+          "expr": "100 -\n(\n  avg(node_memory_MemAvailable_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}) /\n  avg(node_memory_MemTotal_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"})\n* 100\n)\n",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -633,7 +633,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_disk_read_bytes_total{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (@resource.k8s.node.name, device)",
+          "expr": "sum(rate(node_disk_read_bytes_total{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (@resource.k8s.node.name, device)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -749,7 +749,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_disk_written_bytes_total{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (@resource.k8s.node.name, device)",
+          "expr": "sum(rate(node_disk_written_bytes_total{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (@resource.k8s.node.name, device)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -865,7 +865,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_disk_io_time_seconds_total{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (@resource.k8s.node.name, device)",
+          "expr": "sum(rate(node_disk_io_time_seconds_total{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\", device=~\"mmcblk.p.+|nvme.+|rbd.+|sd.+|vd.+|xvd.+|dm-.+|dasd.+\"}[5m])) by (@resource.k8s.node.name, device)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1002,7 +1002,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(\n  max by (device) (\n    node_filesystem_size_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", fstype!=\"\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}\n  -\n    node_filesystem_avail_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", fstype!=\"\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}\n  )\n)\n",
+          "expr": "sum(\n  max by (device) (\n    node_filesystem_size_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", fstype!=\"\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}\n  -\n    node_filesystem_avail_bytes{\"@resource.service.name\"=\"node-exporter\", \"@resource.k8s.node.name\"=~\"$instance\", fstype!=\"\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}\n  )\n)\n",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1132,7 +1132,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_network_receive_bytes_total{\"@resource.service.name\"=\"node-exporter\", device!=\"lo\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[5m])) by (@resource.k8s.node.name)",
+          "expr": "sum(rate(node_network_receive_bytes_total{\"@resource.service.name\"=\"node-exporter\", device!=\"lo\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[5m])) by (@resource.k8s.node.name)",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1235,7 +1235,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_network_transmit_bytes_total{\"@resource.service.name\"=\"node-exporter\", device!=\"lo\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[5m])) by (@resource.k8s.node.name)",
+          "expr": "sum(rate(node_network_transmit_bytes_total{\"@resource.service.name\"=\"node-exporter\", device!=\"lo\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[5m])) by (@resource.k8s.node.name)",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1355,7 +1355,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "DCGM_FI_DEV_GPU_UTIL{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}",
+          "expr": "DCGM_FI_DEV_GPU_UTIL{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}",
           "legendFormat": "{{@resource.k8s.node.name}} - GPU {{gpu}}",
           "refId": "A"
         }
@@ -1456,7 +1456,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "DCGM_FI_DEV_GPU_TEMP{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}",
+          "expr": "DCGM_FI_DEV_GPU_TEMP{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}",
           "legendFormat": "{{@resource.k8s.node.name}} - GPU {{gpu}}",
           "refId": "A"
         }
@@ -1573,7 +1573,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "(DCGM_FI_DEV_FB_USED{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"} / DCGM_FI_DEV_FB_FREE{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}) * 100",
+          "expr": "(DCGM_FI_DEV_FB_USED{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"} / DCGM_FI_DEV_FB_FREE{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}) * 100",
           "legendFormat": "{{@resource.k8s.node.name}} - GPU {{gpu}}",
           "range": true,
           "refId": "A"
@@ -1671,7 +1671,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "DCGM_FI_DEV_FB_USED{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}",
+          "expr": "DCGM_FI_DEV_FB_USED{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}",
           "legendFormat": "{{@resource.k8s.node.name}} - GPU {{gpu}}",
           "refId": "A"
         }
@@ -1781,7 +1781,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "DCGM_FI_DEV_POWER_USAGE{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}",
+          "expr": "DCGM_FI_DEV_POWER_USAGE{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}",
           "legendFormat": "{{@resource.k8s.node.name}} - GPU {{gpu}}",
           "refId": "A"
         }
@@ -1878,7 +1878,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "DCGM_FI_DEV_SM_CLOCK{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"} * 1000000",
+          "expr": "DCGM_FI_DEV_SM_CLOCK{\"@resource.k8s.cluster.name\"=\"${cluster}\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"} * 1000000",
           "legendFormat": "{{@resource.k8s.node.name}} - GPU {{gpu}}",
           "refId": "A"
         }
@@ -1997,7 +1997,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "neuroncore_utilization_ratio{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}",
+          "expr": "neuroncore_utilization_ratio{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}}",
           "refId": "A"
         }
@@ -2104,7 +2104,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "neuroncore_memory_usage_model_code{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"} / neuroncore_memory_usage_model_shared_scratchpad{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"} * 100",
+          "expr": "neuroncore_memory_usage_model_code{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"} / neuroncore_memory_usage_model_shared_scratchpad{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"} * 100",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}}",
           "range": true,
           "refId": "A"
@@ -2214,7 +2214,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "rate(execution_latency_seconds{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[5m]) * 1000",
+          "expr": "rate(execution_latency_seconds{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[5m]) * 1000",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.k8s.pod.name}}",
           "refId": "A"
         }
@@ -2314,7 +2314,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "rate(execution_errors_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[5m])",
+          "expr": "rate(execution_errors_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[5m])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.k8s.pod.name}} - {{error_type}}",
           "refId": "A"
         }
@@ -2394,7 +2394,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "hardware_ecc_events_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}",
+          "expr": "hardware_ecc_events_total{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}}",
           "refId": "A"
         }
@@ -2490,7 +2490,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "neurondevice_runtime_memory_used_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}",
+          "expr": "neurondevice_runtime_memory_used_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.neurondevice}}",
           "refId": "A"
         }
@@ -2602,7 +2602,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(efa_rx_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[$__rate_interval])",
+          "expr": "rate(efa_rx_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[$__rate_interval])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} rx",
           "range": true,
           "refId": "A"
@@ -2613,7 +2613,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(efa_tx_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[$__rate_interval])",
+          "expr": "rate(efa_tx_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[$__rate_interval])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} tx",
           "range": true,
           "refId": "B"
@@ -2714,7 +2714,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(efa_rdma_read_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[$__rate_interval])",
+          "expr": "rate(efa_rdma_read_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[$__rate_interval])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} rdma read",
           "range": true,
           "refId": "A"
@@ -2725,7 +2725,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(efa_rdma_write_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[$__rate_interval])",
+          "expr": "rate(efa_rdma_write_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[$__rate_interval])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} rdma write",
           "range": true,
           "refId": "B"
@@ -2736,7 +2736,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(efa_rdma_write_recv_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[$__rate_interval])",
+          "expr": "rate(efa_rdma_write_recv_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[$__rate_interval])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} rdma write recv",
           "range": true,
           "refId": "C"
@@ -2850,7 +2850,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(efa_rx_dropped{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[$__rate_interval])",
+          "expr": "rate(efa_rx_dropped{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[$__rate_interval])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} rx dropped",
           "range": true,
           "refId": "A"
@@ -2951,7 +2951,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(efa_retrans_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[$__rate_interval])",
+          "expr": "rate(efa_retrans_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[$__rate_interval])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} retrans bytes",
           "range": true,
           "refId": "A"
@@ -2962,7 +2962,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(efa_retrans_pkts{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[$__rate_interval])",
+          "expr": "rate(efa_retrans_pkts{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[$__rate_interval])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} retrans pkts",
           "range": true,
           "refId": "B"
@@ -3063,7 +3063,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(efa_retrans_timeout_events{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[$__rate_interval])",
+          "expr": "rate(efa_retrans_timeout_events{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[$__rate_interval])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} timeout events",
           "range": true,
           "refId": "A"
@@ -3177,7 +3177,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(efa_impaired_remote_conn_events{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[$__rate_interval])",
+          "expr": "rate(efa_impaired_remote_conn_events{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[$__rate_interval])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}}",
           "range": true,
           "refId": "A"
@@ -3278,7 +3278,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(efa_unresponsive_remote_events{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}[$__rate_interval])",
+          "expr": "rate(efa_unresponsive_remote_events{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}[$__rate_interval])",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}}",
           "range": true,
           "refId": "A"
@@ -3392,7 +3392,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "efa_rdma_read_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}",
+          "expr": "efa_rdma_read_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} read",
           "range": true,
           "refId": "A"
@@ -3403,7 +3403,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "efa_rdma_write_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}",
+          "expr": "efa_rdma_write_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} write",
           "range": true,
           "refId": "B"
@@ -3504,7 +3504,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "efa_rx_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}",
+          "expr": "efa_rx_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} rx",
           "range": true,
           "refId": "A"
@@ -3515,7 +3515,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "efa_tx_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", @resource.k8s.node.label.eks.amazonaws.com/nodegroup`=~\"$nodegroup\", @resource.k8s.node.label.node.kubernetes.io/instance-type=~\"$instance_type\"}",
+          "expr": "efa_tx_bytes{\"@resource.k8s.cluster.name\"=\"$cluster\", \"@resource.k8s.node.name\"=~\"$instance\", \"@resource.host.id\"=~\"$instance_id\", \"@resource.k8s.node.label.eks.amazonaws.com/nodegroup\"=~\"$nodegroup\", \"@resource.k8s.node.label.node.kubernetes.io/instance-type\"=~\"$instance_type\"}",
           "legendFormat": "{{@resource.k8s.node.name}} - {{@resource.hw.name}} tx",
           "range": true,
           "refId": "B"
